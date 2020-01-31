@@ -43,6 +43,8 @@ public class Input
 		shortOne = keyboard.nextShort();
 		enter("short");
 		shortTwo = keyboard.nextShort();
+		
+		
 
 	
 		//add in input for all variables

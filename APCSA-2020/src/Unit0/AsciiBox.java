@@ -2,10 +2,10 @@ package Unit0;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Caylin Canoy
+//Date - 1/31/20
+//Class - APCSA
+//Lab  - AsciiBox
 
 public class AsciiBox
 {

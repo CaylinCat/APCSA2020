@@ -2,11 +2,6 @@ package Unit0;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
-
 public class Variables
 {
 	public static void main ( String[] args )
