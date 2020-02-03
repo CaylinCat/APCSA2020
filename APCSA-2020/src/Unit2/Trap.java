@@ -1,9 +1,9 @@
 package Unit2;
 //© A+ Computer Science  -  www.apluscompsci.com
-//Name -
-//Date -
-//Class -
-//Lab  - 
+//Name - Caylin Canoy
+//Date - 2/3/20
+//Class - APCSA
+//Lab  - Trap
 
 public class Trap
 {

@@ -1,8 +1,8 @@
 package Unit2;
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Caylin Canoy
+//Date - 2/3/20
 
 public class Line
 {
