@@ -5,7 +5,7 @@ package Unit0;
 //Name - Caylin Canoy
 //Date - 1/30/20
 //Class - APCSA
-//Lab  - Inputs
+//Lab  - Input
 
 import static java.lang.System.*;
 import java.util.Scanner;
