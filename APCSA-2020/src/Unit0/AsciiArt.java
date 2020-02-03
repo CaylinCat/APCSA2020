@@ -11,7 +11,7 @@ public class AsciiArt
 {
 	public static void main ( String[] args )
 	{
-		System.out.println("Your Name \n\n" );
+		System.out.println("Caylin \n\n" );
 		System.out.println("What type of ANIMAL YOU WILL DRAW" );
 		System.out.println("\n\n\n\n" );
 		house(3);
