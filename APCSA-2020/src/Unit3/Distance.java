@@ -58,6 +58,7 @@ public class Distance
 
 	public String toString()
 	{
-		return "distance == " + df.format(distance) + "\n";
+		String distancey = String.format("%.3f", distance);
+		return "distance == " + distancey + "\n";
 	}
 }

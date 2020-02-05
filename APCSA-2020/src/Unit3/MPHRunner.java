@@ -17,6 +17,7 @@ public class MPHRunner
 	{
 		Scanner keyboard = new Scanner(in);
 
+		//ask for user input 45 0 32
 		out.print("Enter the distance :: ");
 		int dist = keyboard.nextInt();
 
@@ -30,6 +31,7 @@ public class MPHRunner
 		test.calcMPH();
 		test.print();
 		
+		//ask for user input 96 1 43
 		out.print("Enter the distance :: ");
 		dist = keyboard.nextInt();
 
@@ -43,6 +45,7 @@ public class MPHRunner
 		testo.calcMPH();
 		testo.print();
 		
+		//ask for user input 100 2 25
 		out.print("Enter the distance :: ");
 		dist = keyboard.nextInt();
 
@@ -56,6 +59,7 @@ public class MPHRunner
 		testy.calcMPH();
 		testy.print();
 		
+		//ask for user input 50 2 25
 		out.print("Enter the distance :: ");
 		dist = keyboard.nextInt();
 
@@ -70,7 +74,7 @@ public class MPHRunner
 		testu.print();
 		
 		//add more test cases
-		System.out.println("\nOther Test Cases: ");
+		System.out.println("\nTest Cases of Sample Data: ");
 		MilesPerHour test1 = new MilesPerHour(45, 0, 32);
 		test1.calcMPH();
 		test1.print();

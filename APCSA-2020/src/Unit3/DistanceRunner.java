@@ -17,7 +17,8 @@ public class DistanceRunner
 	{
 
 		Scanner keyboard = new Scanner(in);
-
+		
+		//ask for user input 1 1 2 1
 		out.print("Enter X1 :: ");
 		int x1 = keyboard.nextInt();
 
@@ -34,6 +35,7 @@ public class DistanceRunner
 		test.calcDistance();
 		System.out.println(test);
 		
+		//ask for user input 1 1 -2 2
 		out.print("Enter X1 :: ");
 		x1 = keyboard.nextInt();
 
@@ -50,6 +52,7 @@ public class DistanceRunner
 		testo.calcDistance();
 		System.out.println(testo);
 		
+		//ask for user input 1 1 0 0
 		out.print("Enter X1 :: ");
 		x1 = keyboard.nextInt();
 
@@ -67,7 +70,7 @@ public class DistanceRunner
 		System.out.println(testy);
 			
 		//add test cases
-		System.out.println("\nOther Test Cases: ");
+		System.out.println("\nTest Cases of Sample Data: ");
 		Distance test1 = new Distance(1, 1, 2, 1);
 		test1.calcDistance();
 		System.out.println(test1);
