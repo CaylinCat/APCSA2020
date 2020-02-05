@@ -2,10 +2,10 @@ package Unit3;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Caylin Canoy
+//Date - 2/5/20
+//Class - APCSA
+//Lab  - DistanceRunner
 
 import java.util.Scanner; 
 import static java.lang.System.*;
