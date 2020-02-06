@@ -73,7 +73,7 @@ public class MPHRunner
 		testu.calcMPH();
 		testu.print();
 		
-		//add more test cases
+		//add additional test cases here
 		System.out.println("\nTest Cases of Sample Data: ");
 		MilesPerHour test1 = new MilesPerHour(45, 0, 32);
 		test1.calcMPH();
