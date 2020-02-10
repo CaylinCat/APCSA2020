@@ -14,6 +14,8 @@ public class StringEqualityRunner
 	public static void main( String args[] )
 	{
 		//add test cases
+		StringEquality hi = new StringEquality("hello", "goodbye");
+		System.out.println(hi);
 		
 	}
 }
