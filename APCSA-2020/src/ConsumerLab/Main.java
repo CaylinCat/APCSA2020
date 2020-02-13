@@ -7,6 +7,7 @@ class Main {
 	public static void main(String[] args) {
 		// test reading from files
 		// read in the positive adjectives in postiveAdjectives.txt
+		// hi
 		try {
 			Scanner input = new Scanner(new File("src/ConsumerLab/positiveAdjectives.txt"));
 			while (input.hasNextLine()) {
