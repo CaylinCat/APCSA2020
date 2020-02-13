@@ -12,5 +12,13 @@ public class WordRunner
 		//add test cases		
 		Word testy = new Word("Hello");
 		System.out.println(testy);
+		testy.setString("World");
+		System.out.println(testy);
+		testy.setString("JukeBox");
+		System.out.println(testy);
+		testy.setString("TCEA");
+		System.out.println(testy);
+		testy.setString("UIL");
+		System.out.println(testy);
 	}
 }

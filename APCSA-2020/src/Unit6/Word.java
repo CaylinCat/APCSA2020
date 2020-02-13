@@ -37,11 +37,11 @@ public class Word
 	public String getBackWards()
 	{
 		String back="";
-		for(int i=word.length()-1; i>0; i--) {
-			if(i == word.length()) {
-				back = back + word.substring(i);
+		for(int i=word.length()-1; i>=0; i--) {
+			if(i == word.length()-1) {
+				back = back + word.charAt(i);
 			} else {
-			back = back + word.substring(i-1, i);
+			back = back + word.substring(i, i+1);
 			}
 		}
 		return back;
@@ -49,6 +49,6 @@ public class Word
 
  	public String toString()
  	{
- 		return getFirstChar() + "\n" + getLastChar() + "\n" + getBackWards() + "\n" + word;
+ 		return getFirstChar() + "\n" + getLastChar() + "\n" + getBackWards() + "\n" + word + "\n";
 	}
 }
