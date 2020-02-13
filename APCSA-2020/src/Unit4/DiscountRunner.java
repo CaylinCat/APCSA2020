@@ -2,10 +2,10 @@ package Unit4;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name - 
-//Date -
-//Class -
-//Lab  -
+//Name - Caylin Canoy
+//Date - Feb
+//Class - APCSA
+//Lab  - DiscountRunner
 
 import static java.lang.System.*;
 import java.util.Scanner;

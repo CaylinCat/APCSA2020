@@ -1,7 +1,7 @@
 package Unit4;
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Caylin Canoy
 
 import static java.lang.System.*; 
 import java.util.Scanner;
