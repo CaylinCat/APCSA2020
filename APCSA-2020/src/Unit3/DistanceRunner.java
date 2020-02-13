@@ -69,7 +69,7 @@ public class DistanceRunner
 		testy.calcDistance();
 		System.out.println(testy);
 			
-		//add test cases
+		//add additional test cases (same test cases xd)
 		System.out.println("\nTest Cases of Sample Data: ");
 		Distance test1 = new Distance(1, 1, 2, 1);
 		test1.calcDistance();
