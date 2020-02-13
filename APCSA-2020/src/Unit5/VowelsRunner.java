@@ -8,21 +8,28 @@ public class VowelsRunner
 {
 	public static void main( String args[] )
 	{
-		FirstLastVowel s = new FirstLastVowel();
+		//FirstLastVowel s = new FirstLastVowel();
+		
+		/*
+		 * Although you could call the go method using s.go(""); after creating an s object,
+		 * the go method came static in the FirstLastVowel class. Due to it being static
+		 * I think it is appropriate to access it in a static way by using FirstLastVowel.go(""); 
+		 * to call the method instead of creating an object and using that to call it.
+		*/
 			
-		System.out.println(  s.go(  "dog#cat#pigaplus")    );
-		System.out.println(  s.go(  "pigs#apluscompsci#food")    );
-		System.out.println(  s.go(  "##catgiraffeapluscompscI")    );
-		System.out.println(  s.go(  "apluscatsanddogsaplus###")    );
-		System.out.println(  s.go(  "###")    );
-		System.out.println(  s.go(  "Aplusdog#13337#pigaplusprogram")    );
-		System.out.println(  s.go(  "code#H00P#code1234")    );
-		System.out.println(  s.go(  "##wowgira77##eplus")    );
-		System.out.println(  s.go(  "catsandaplusdogsaplus###")    );
-		System.out.println(  s.go(  "7")    );
-		System.out.println(  s.go(  "A")    );
-		System.out.println(  s.go(  "E")    );
-		System.out.println(  s.go(  "9AEIOUaeiou@")    );
+		System.out.println(  FirstLastVowel.go(  "dog#cat#pigaplus")    );
+		System.out.println(  FirstLastVowel.go(  "pigs#apluscompsci#food")    );
+		System.out.println(  FirstLastVowel.go(  "##catgiraffeapluscompscI")    );
+		System.out.println(  FirstLastVowel.go(  "apluscatsanddogsaplus###")    );
+		System.out.println(  FirstLastVowel.go(  "###")    );
+		System.out.println(  FirstLastVowel.go(  "Aplusdog#13337#pigaplusprogram")    );
+		System.out.println(  FirstLastVowel.go(  "code#H00P#code1234")    );
+		System.out.println(  FirstLastVowel.go(  "##wowgira77##eplus")    );
+		System.out.println(  FirstLastVowel.go(  "catsandaplusdogsaplus###")    );
+		System.out.println(  FirstLastVowel.go(  "7")    );
+		System.out.println(  FirstLastVowel.go(  "A")    );
+		System.out.println(  FirstLastVowel.go(  "E")    );
+		System.out.println(  FirstLastVowel.go(  "9AEIOUaeiou@")    );
 
 	}
 }
