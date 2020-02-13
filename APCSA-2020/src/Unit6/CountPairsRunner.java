@@ -1,7 +1,7 @@
 package Unit6;
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name
+//Name Caylin Canoy
 
 import static java.lang.System.*; 
 
