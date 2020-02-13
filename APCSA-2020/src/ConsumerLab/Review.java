@@ -9,6 +9,7 @@ import java.io.*;
 /**
  * Class that contains helper methods for the Review Lab
  **/
+//
 public class Review {
   
   private static HashMap<String, Double> sentiment = new HashMap<String, Double>();
