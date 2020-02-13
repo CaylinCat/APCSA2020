@@ -1,8 +1,8 @@
 package Unit5;
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Caylin Canoy
+//Date - Sometime
 
 public class AvgLen
 {

@@ -2,10 +2,10 @@ package Unit5;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Caylin Canoy
+//Date - Sometime Febbb
+//Class - APCSA
+//Lab  - Words Compare
 
 import static java.lang.System.*;
 
