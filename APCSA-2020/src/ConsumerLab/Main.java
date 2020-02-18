@@ -5,6 +5,9 @@ import java.util.*;
 
 class Main {
 	public static void main(String[] args) {
+		
+		//System.out.println(Review.sentimentVal("happy"));
+		System.out.println(Review.totalSentiment("src/ConsumerLab/simpleReview.txt"));
 		// test reading from files
 		// read in the positive adjectives in postiveAdjectives.txt
 		// hi
