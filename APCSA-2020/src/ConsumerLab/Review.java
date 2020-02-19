@@ -208,6 +208,8 @@ public class Review {
     // return number of stars
     return stars; 
   }
+	
+	
   /** Activity 3 Autogenerate a Fake Review
   */
   public static String fakeReview(String filename)
@@ -215,60 +217,47 @@ public class Review {
 	  String word = textToString(filename);
 	  int x = word.indexOf("*");
 	  int y = word.indexOf(" ");
-	  while(x>=0 && y>=0){
-	  	word= word.replace(word.substring(x,y), randomAdjective());
-		x = word.indexOf("*");
-	  	y = word.indexOf(" ");
-		  //uwu
-	  }
+    while(x>=0){
+        y = word.substring(x).indexOf(" ");
+        word = word.substring(0,x) + randomAdjective() + word.substring(y + x);
+        x = word.indexOf("*");
+    }
 	  return word;
   }
+	
+	
   /** Activity 4 Positive/Negative Review
   */
   public static String positiveReview(String filename)
   {
-	  String words = textToString(filename);
-	  String changed = textToString(filename);
-	  String thisWord = " ";
-	  int x = changed.indexOf(" ");
-	  while(x>0){
-		thisWord = changed.substring(0,x);
-		if(sentimentVal(thisWord) < 0){
-			words = words.replace(words.substring(words.indexOf(thisWord),thisWord.length()), randomPositiveAdj());
-		}
-		changed = changed.replace(changed.substring(0,x+1), "");
-		x = changed.indexOf(" ");
-		if(x < 0){
-			if(sentimentVal(changed) < 0){
-				words = words.replace(words.substring(words.indexOf(changed), randomPositiveAdj());
-			}
-			break;
-		}
-	  }
-	  return words;
+	  String word = textToString(filename);
+	  int x = word.indexOf("*");
+	  int y = word.indexOf(" ");
+    while(x>=0){
+        y = word.substring(x).indexOf(" ");
+        if(sentimentVal(word.substring(x+1,x+y)) < 0){
+          word = word.substring(0,x) + randomPositiveAdj() + word.substring(y + x);
+        } else{
+          word = word.substring(0,x) + word.substring(x+1);
+        }
+        x = word.indexOf("*");
+    }
+	  return word;
   }
   public static String negativeReview(String filename)
   {
-	  String words = textToString(filename);
-	  String changed = textToString(filename);
-	  String thisWord = " ";
-	  int x = words.indexOf(" ");
-	  int y = words.indexOf("*");
-	  while(x>0){
-		thisWord = words.substring(y+1,x);
-		if(sentimentVal(thisWord) > 0){
-			words = words.replaceAll(words.substring(y,x), randomNegativeAdj());
-		}
-		changed = changed.replace(changed.substring(0,x+1), "");
-		x = changed.indexOf(" ");
-		y = words.indexOf("*");
-		if(x < 0){
-			if(sentimentVal(changed) > 0){
-				words = words.replace(words.substring(y), randomNegativeAdj());
-			}
-			break;
-		}
-	  }
-	  return words;
+	  String word = textToString(filename);
+	  int x = word.indexOf("*");
+	  int y = word.indexOf(" ");
+    while(x>=0){
+        y = word.substring(x).indexOf(" ");
+        if(sentimentVal(word.substring(x+1,x+y)) > 0){
+          word = word.substring(0,x) + randomNegativeAdj() + word.substring(y + x);
+        } else{
+          word = word.substring(0,x) + word.substring(x+1);
+        }
+        x = word.indexOf("*");
+    }
+	  return word;
   }
 }
