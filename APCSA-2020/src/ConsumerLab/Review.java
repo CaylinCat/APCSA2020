@@ -208,4 +208,65 @@ public class Review {
     // return number of stars
     return stars; 
   }
+  /** Activity 3 Autogenerate a Fake Review
+  */
+  public static String fakeReview(String filename)
+  {
+	  String word = textToString(filename);
+	  int x = word.indexOf("*");
+	  int y = word.indexOf(" ");
+	  while(x>=0 && y>=0){
+	  	word= word.replace(word.substring(x,y), randomAdjective());
+		x = word.indexOf("*");
+	  	y = word.indexOf(" ");
+		  //uwu
+	  }
+	  return word;
+  }
+  /** Activity 4 Positive/Negative Review
+  */
+  public static String positiveReview(String filename)
+  {
+	  String words = textToString(filename);
+	  String changed = textToString(filename);
+	  String thisWord = " ";
+	  int x = changed.indexOf(" ");
+	  while(x>0){
+		thisWord = changed.substring(0,x);
+		if(sentimentVal(thisWord) < 0){
+			words = words.replace(words.substring(words.indexOf(thisWord),thisWord.length()), randomPositiveAdj());
+		}
+		changed = changed.replace(changed.substring(0,x+1), "");
+		x = changed.indexOf(" ");
+		if(x < 0){
+			if(sentimentVal(changed) < 0){
+				words = words.replace(words.substring(words.indexOf(changed), randomPositiveAdj());
+			}
+			break;
+		}
+	  }
+	  return words;
+  }
+  public static String negativeReview(String filename)
+  {
+	  String words = textToString(filename);
+	  String changed = textToString(filename);
+	  String thisWord = " ";
+	  int x = changed.indexOf(" ");
+	  while(x>0){
+		thisWord = changed.substring(0,x);
+		if(sentimentVal(thisWord) > 0){
+			words = words.replace(words.substring(words.indexOf(thisWord),thisWord.length()), randomNegativeAdj());
+		}
+		changed = changed.replace(changed.substring(0,x+1), "");
+		x = changed.indexOf(" ");
+		if(x < 0){
+			if(sentimentVal(changed) > 0){
+				words = words.replace(words.substring(words.indexOf(changed), randomNegativeAdj());
+			}
+			break;
+		}
+	  }
+	  return words;
+  }
 }
