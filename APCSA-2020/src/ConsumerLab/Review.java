@@ -252,17 +252,19 @@ public class Review {
 	  String words = textToString(filename);
 	  String changed = textToString(filename);
 	  String thisWord = " ";
-	  int x = changed.indexOf(" ");
+	  int x = words.indexOf(" ");
+	  int y = words.indexOf("*");
 	  while(x>0){
-		thisWord = changed.substring(0,x);
+		thisWord = words.substring(y+1,x);
 		if(sentimentVal(thisWord) > 0){
-			words = words.replace(words.substring(words.indexOf(thisWord),thisWord.length()), randomNegativeAdj());
+			words = words.replaceAll(words.substring(y,x), randomNegativeAdj());
 		}
 		changed = changed.replace(changed.substring(0,x+1), "");
 		x = changed.indexOf(" ");
+		y = words.indexOf("*");
 		if(x < 0){
 			if(sentimentVal(changed) > 0){
-				words = words.replace(words.substring(words.indexOf(changed), randomNegativeAdj());
+				words = words.replace(words.substring(y), randomNegativeAdj());
 			}
 			break;
 		}
