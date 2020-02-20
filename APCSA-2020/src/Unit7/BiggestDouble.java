@@ -30,16 +30,20 @@ public class BiggestDouble
 	public double getBiggest()
 	{
 		double biggest = 0;
-		if(one < two)
+		if(biggest < one)
+			biggest = one;
+		if(biggest < two)
 			biggest = two;
-		if(two < three)
+		if(biggest < three)
 			biggest = three;
+		if(biggest < four)
+			biggest = four;
 			
-		return 0.0;
+		return biggest;
 	}
 
 	public String toString()
 	{
-	   return "";
+	   return one + " " + two + " " + three + " " + four;
 	}
 }
