@@ -36,13 +36,26 @@ public class TriangleFive
 	{
 		String output="";
 		
-		for(int j=amount; j > 0; j--) {
-			for(int i=amount; i > 0; i--) {
-				System.out.println(letter);
-			}
-			//letter = letter - 1;
-		}
+		int curAmount = amount;
+		char curLet = letter;
+		int diffLetAmount = amount;
 		
+		for(int k=amount; k>0; k--) {
+			for(int j=diffLetAmount; j > 0; j--) {
+				for(int i=curAmount; i > 0; i--) {
+					System.out.print(curLet);
+				}
+				curLet = (char)(curLet + 1);
+				if(curLet == '[')
+					curLet = 'A';
+				curAmount = curAmount - 1;
+				System.out.print(" ");
+			}
+			diffLetAmount--;
+			curAmount = amount;
+			curLet = letter;
+			System.out.println("");
+		}
 		
 		
 		
