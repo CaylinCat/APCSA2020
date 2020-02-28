@@ -10,13 +10,17 @@ public class Card
 
 	//instance variables
 		String suit = "";
-		String rank = "";
+		String rank = null;
 		int face = 0;
 
   	//constructors
 		public Card(String rank, String suit, int face) {
 			setSuit(suit);
 			setRank(rank);
+			setFace(face);
+		}
+		public Card(String suit, int face) {
+			setSuit(suit);
 			setFace(face);
 		}
 
@@ -45,8 +49,20 @@ public class Card
 		public int getFace() {
 			return face;
 		}
+		
+	//methods
+		public boolean testEquality(int face1, int face2) {
+			if(face1 == face2)
+				return true;
+			return false;
+		}
 
 
   	//toString
+		public String toString() {
+			if(rank==null)
+				return suit + " point value = " + face;
+			return rank + " of " + suit + " point value = " + face;
+		}
 
  }
