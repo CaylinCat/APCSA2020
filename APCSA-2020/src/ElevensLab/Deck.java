@@ -30,8 +30,8 @@ public class Deck {
 		top = 51;
 
 		for(int i=0; i<SUITS.length; i++) {
-			for(int j=0; j<POINTS.length; j++) {
-				cards.add(new Card(FACES[j+1], SUITS[i], POINTS[j]));
+			for(int f=1; f<=13; f++) {
+				cards.add(new Card(FACES[f],SUITS[i], f));
 			}
 		}
 		
@@ -43,26 +43,34 @@ public class Deck {
 		//refer cards to new ArrayList
 		cards = new ArrayList<Card>();
 		//set top to the top of the deck 51
-		top = 51;
+		//top = 51;
 		
 		//loop through all suits
    		//loop through all faces 1 to 13
    			//add a new TwentyOneCard to the deck
 		for(int i=0; i<suits.length; i++) {
-			for(int j=1; j<=13; j++) {
-				cards.add(new Card(ranks[j+1], suits[i], points[j]));
+			for(int j=0; j<ranks.length; j++) {
+				cards.add(new Card(ranks[j], suits[i], points[j]));
 			}
 		}
 		
 		size = cards.size();
+		top = size-1;
+		shuffle();
 		//System.out.println(size);
 	}
    	
    //make a dealCard() method that returns the top card
 	public Card dealCard() {
-		Card cardDeal = cards.get(size-1);
+		Card topCard;
+		if(!isEmpty())
+			topCard = cards.get(top);
+		else {
+			return new Card();
+		}
+		top--;
 		size--;
-		return cardDeal;
+		return topCard;
 		
 	}
    
@@ -72,18 +80,20 @@ public class Deck {
 		Collections.shuffle(cards);
    	//reset the top card 
 		size = cards.size();
-		top = 51;
+		top = size-1;
 	}
 	
 	
 	//other methods
-	public boolean isEmpty(ArrayList<Card> card) {
-		if(card.size() == 0)
-			return true;
-		return false;
+	public boolean isEmpty() {
+		return size==0;
 	}
 	public int size() {
 		return size;
+	}
+	public void resetTop() {
+		size = cards.size();
+		top = size - 1;
 	}
 
 }

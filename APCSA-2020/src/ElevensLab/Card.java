@@ -12,6 +12,7 @@ public class Card
 		String suit = "";
 		String rank = null;
 		int face = 0;
+		//face is the same as point value
 
   	//constructors
 		public Card(String rank, String suit, int face) {
@@ -22,6 +23,9 @@ public class Card
 		public Card(String suit, int face) {
 			setSuit(suit);
 			setFace(face);
+		}
+		public Card() {
+			
 		}
 
 
@@ -51,8 +55,8 @@ public class Card
 		}
 		
 	//methods
-		public boolean testEquality(int face1, int face2) {
-			if(face1 == face2)
+		public boolean testEquality(Card otherCard) {
+			if(this.getSuit().equals(otherCard.getSuit()) && this.getRank().equals(otherCard.getRank()) && this.getFace() == otherCard.getFace())
 				return true;
 			return false;
 		}
