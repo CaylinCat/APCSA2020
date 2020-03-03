@@ -18,6 +18,7 @@ public class DeckRunner
 		}
 		
 		test.shuffle();	
+		//perfectShuffle(test);
 		
 		System.out.println( "\n\nAll cards after shuffling.\n" );
 		for( int j = 1; j <= 52; j++ )

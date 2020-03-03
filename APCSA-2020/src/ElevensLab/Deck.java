@@ -77,7 +77,26 @@ public class Deck {
    //write a shuffle() method
 	public void shuffle() {
 	//use Colletions.shuffle
-		Collections.shuffle(cards);
+	//regular shuffle
+		//Collections.shuffle(cards);
+		
+	//selection shuffle	
+		int[] indexs = new int[cards.size()];
+		for(int i=0; i<cards.size(); i++) {
+			indexs[i] = i;
+		}
+		int index = 0;
+		Shuffler.selectionShuffle(indexs);
+		List<Card> tempCards = new ArrayList<Card>();
+		for(Card i : cards) {
+			tempCards.add(cards.get(indexs[index]));
+			//System.out.println(indexs[index] + " " + index);
+			index++;
+		}
+		for(int i=0; i<cards.size(); i++) {
+			cards.set(i, tempCards.get(i));
+		}
+		
    	//reset the top card 
 		size = cards.size();
 		top = size-1;
@@ -94,6 +113,17 @@ public class Deck {
 	public void resetTop() {
 		size = cards.size();
 		top = size - 1;
+	}
+	
+	public String toString() {
+		String news = "";
+		//for(Card hi : cards) {
+		for(int i=0; i<size; i++) {
+			news = news + cards.get(i) + ", ";
+		}
+		if(size >0)
+			return "The cards are: " + news;
+		return "There are no more cards!";
 	}
 
 }

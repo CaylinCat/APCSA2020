@@ -66,7 +66,7 @@ public class Card
 		public String toString() {
 			if(rank==null)
 				return suit + " point value = " + face;
-			return rank + " of " + suit + " point value = " + face;
+			return rank + " of " + suit + " (point value = " + face + ")";
 		}
 
  }
