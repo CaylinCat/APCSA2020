@@ -40,6 +40,7 @@ class Rational implements Comparable<Rational>
 		//new denominator = (den1 * den2)
 		int denominator = denom*other.denom;
 		
+		System.out.println(numer + " " + denom + " others: " + other.numer + " " + other.denom);
 		numer = numerator;
 		denom = denominator;
 		System.out.println(numer + " " + denom);
@@ -92,8 +93,9 @@ class Rational implements Comparable<Rational>
 
 	public int compareTo(Rational other)
 	{
-		if(numer/denom > other.numer/other.denom)
+		if(numer/denom > other.numer/other.denom) {
 			return 1;
+		}
 
 		return -1;
 	}
