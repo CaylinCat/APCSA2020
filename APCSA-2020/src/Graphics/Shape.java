@@ -51,7 +51,7 @@ public class Shape
       //  [ :: ]
       //    ()
       window.fillOval(xPos, yPos, 100, 100);
-	  window.setColor(Color.black);
+	  window.setColor(color);
       window.fillRect(xPos+50, yPos+80, 200, 100);
       window.setColor(Color.orange);
       window.fillRect(xPos+50, yPos+180, 30, 50);

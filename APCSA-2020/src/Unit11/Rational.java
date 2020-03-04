@@ -93,7 +93,7 @@ class Rational implements Comparable<Rational>
 
 	public int compareTo(Rational other)
 	{
-		if(numer/denom > other.numer/other.denom) {
+		if((double)numer/denom > (double)other.numer/other.denom) {
 			return 1;
 		}
 
