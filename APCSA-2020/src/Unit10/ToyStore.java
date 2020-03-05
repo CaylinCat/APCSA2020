@@ -24,17 +24,17 @@ public class ToyStore
 		while(toyss.indexOf(" ") > -1){
 			singleToy = toyss.substring(0,toyss.indexOf(" "));
 			toyss = toyss.substring(toyss.indexOf(" "));
-			toyList.add(singleToy);
+			toyList.add(new Toy(singleToy));
 		}
 	}
   
   	public Toy getThatToy( String nm )
   	{
   		for(Toy hi : toyList){
-			if(hi.getname().equals(nm))
+			if(hi.getName().equals(nm))
 				return hi;
 		}
-		return "";
+		return new Toy();
   	}
   
   	public String getMostFrequentToy()
@@ -44,12 +44,12 @@ public class ToyStore
 		String freq = "";
   		for(Toy hi : toyList){
 			for(int i=0; i<toyList.size(); i++){
-				if(hi.getname()equals(nm))
+				if(hi.getName().equals(freq))
 					count++;
 			}
 			if(count > greatestCount)
 				greatestCount = count;
-				freq = hi.getname();
+			freq = hi.getName();
 		}
 		return freq;
   	}  
@@ -57,29 +57,22 @@ public class ToyStore
   	public void sortToysByCount()
   	{
 		int count = 0;
-		ArrayList<Integer> index = new ArrayList<Integer>();
 		ArrayList<Toy> newBox = new ArrayList<Toy>();
+		ArrayList<Toy> newSortedBox = new ArrayList<Toy>();
 		String freq = "";
   		for(Toy hi : toyList){
-			for(int i=0; i<toyList.size(); i++){
-				if(hi.getname()equals(nm))
-					count++;
-			}
-			freq = hi.getname();
-			if(index.size()==0)
-				newBox.add(freq);
-				index.add(count);
-			if(index.size()>0){
-				for(int i=0; i<newBox.size(); i++){
-					if(count > index.get(i))
-						newBox.add(freq,i+1);
-					else if (count < index.get(i))
-						newBox.add(freq, 0);
-				}
+			if (newBox.indexOf(hi) == -1) {
+				newBox.add(hi);
+			} else if (newBox.indexOf(hi) > -1) {
+				newBox.get(newBox.indexOf(hi)).setCount(newBox.get(newBox.indexOf(hi)).getCount() + 1);
 			}
 		}
-		for(int i=0; i<toyBox.size(); i++){
-			toyList.get() = newBox.get();
+  		for(Toy hi : newBox) {
+  			newSortedBox.add(hi);
+  		}
+		for(int i=0; i<newBox.size(); i++){
+			if(newBox.get(i).getCount() < newBox.get(i+1).getCount())
+				newSortedBox.set(i, newBox.get(i));
 		}
   	}  
   	  
