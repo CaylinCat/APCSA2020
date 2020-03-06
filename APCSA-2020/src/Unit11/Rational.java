@@ -36,32 +36,30 @@ class Rational implements Comparable<Rational>
 	{
 		//num1/den1 + num2/den2 
 		//new numerator = (num1 * den2 + num2 * den1)
-		int numerator = numer*other.denom + other.numer*denom;
+		int numerator = numer*other.getDenominator() + other.getNumerator()*denom;
 		//new denominator = (den1 * den2)
-		int denominator = denom*other.denom;
+		int denominator = denom*other.getDenominator();
 		
-		System.out.println(numer + " " + denom + " others: " + other.numer + " " + other.denom);
+		//System.out.println(numer + " " + denom + " others: " + other.getNumerator() + " " + other.getDenominator());
 		numer = numerator;
 		denom = denominator;
-		System.out.println(numer + " " + denom);
+		//System.out.println(numer + " " + denom);
 		reduce();
 	}
 
 	private void reduce()
 	{
-		numer = numer/gcd(numer, denom);
-		denom = denom/gcd(numer, denom);
-
+		int gcd = gcd(numer,denom);
+		numer = numer/gcd;
+    		denom = denom/gcd;
 	}
 
 	private int gcd(int numOne, int numTwo)
 	{
-		int min = Math.min(numOne, numTwo);
-		for(int x=min; x>1; x--) {
-			if(numOne%x==0 && numTwo%x==0)
-				return x;
-		}
-		return 1;
+		if(numTwo == 0)
+      			return numOne; 
+    		return gcd(numTwo, numOne%numTwo);
+
 	}
 
 	public Object clone ()
