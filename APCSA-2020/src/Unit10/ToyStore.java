@@ -21,90 +21,75 @@ public class ToyStore
 
 	public void loadToys( String toys )
 	{
-		String singleToy = "";
-		String toyss = toys;
-		System.out.println(toyss);
-		while(toyss.indexOf(" ") > -1){
-			singleToy = toyss.substring(0,toyss.indexOf(" "));
-			//System.out.println(singleToy);
-			toyList.add(new Toy(singleToy));
-			if(toyss.indexOf(" ") > -1)
-				toyss = toyss.substring(toyss.indexOf(" ")+1);
+		//String singleToy = "";
+		//String toyss = toys;
+		
+		for(String singleToy : toys.split(" ")){
+			//singleToy = toyss.substring(0,toyss.indexOf(" "));
+			Toy boi = getThatToy(singleToy);
+				//System.out.println(singleToy);
+			if(boi == null)
+				toyList.add(new Toy(singleToy));
 			else
-				toyss = "";
+				boi.setCount(boi.getCount()+1);
 		}
+	        //System.out.println(toyList);
 	}
   
-  	public Toy getThatToy( String nm )
-  	{
-  		for(Toy hi : toyList){
-			if(hi.getName().equals(nm))
-				return hi;
-		}
-		return new Toy();
-  	}
-  
-  	public String getMostFrequentToy()
-  	{
+	public Toy getThatToy( String nm )
+	{
+	    	for(Toy hi : toyList){
+	    		if(hi.getName().equals(nm))
+	     			return hi;
+	  	}
+	 	return null;
+	}
+
+	public String getMostFrequentToy()
+	{
 		/*int count = 0;
 		int greatestCount = 0;
 		String freq = "";
-  		for(Toy hi : toyList){
-			for(int i=0; i<toyList.size(); i++){
-				if(hi.getName().equals(freq))
-					count++;
-			}
-			if(count > greatestCount)
-				greatestCount = count;
-			freq = hi.getName();
-		}
-		return freq; */
-  		String maxName = "";
-  		int maxInt = 0;
-  		for(Toy hi : toyList) {
-  			if(hi.getCount() > maxInt)
-  				maxName = hi.getName();
-  		}
-  		return maxName;
-  	}  
-  
-  	public void sortToysByCount()
-  	{
-		int count = 0;
-		ArrayList<Toy> newBox = new ArrayList<Toy>();
-		ArrayList<Toy> newSortedBox = new ArrayList<Toy>();
-		String freq = "";
-		//reducing toyList into newBox to contain the string, count
-  		for(int i=0; i<toyList.size(); i++){
-  			System.out.println(newBox);
-			if (newBox.indexOf(toyList.get(i)) == -1) {
-				newBox.add(toyList.get(i));
-			} else if (newBox.indexOf(toyList.get(i)) > -1) {
-				newBox.get(newBox.indexOf(toyList.get(i))).setCount(newBox.get(newBox.indexOf(toyList.get(i))).getCount() + 1);
-			}
-		}
-  		//copying newBox to a newSortedBox
-  		for(Toy hi : newBox) {
-  			newSortedBox.add(hi);
-  		}
-  		//sorting the Box
-  		for(Toy hi : newBox) {
-			for(int i=0; i<newBox.size(); i++){
-				if(hi.getCount() <= newBox.get(i).getCount())
-					newSortedBox.set(i, newBox.get(i));
-			}
-  		}
-  		for(int i=0; i<toyList.size(); i++) {
-  			toyList.remove(i);
-  		}
-  	}  
+	 	for(Toy hi : toyList){
+	    	for(int i=0; i<toyList.size(); i++){
+	      	if(hi.getName().equals(freq))
+			count++;
+	    	}
+	    	if(count > greatestCount)
+	      		greatestCount = count;
+	    	freq = hi.getName();
+	  	}
+	  	return freq; */
+	    	String maxName = "";
+	    	int maxInt = 0;
+	    	for(Toy hi : toyList) {
+	      		if(hi.getCount() > maxInt){
+				maxName = hi.getName();
+				maxInt = hi.getCount();
+	      		}
+	    	}
+	    	return maxName;
+	  }  
+
+	  public void sortToysByCount()
+	  {
+	  	int size = toyList.size();
+	  	ArrayList<Toy> newBox = new ArrayList<Toy>();
+	  	//Toy testy = new Toy();
+
+	  	//sorting the Box
+
+	  	for(int i=0; i<size; i++){
+	      		Toy me = getThatToy(getMostFrequentToy());
+	      		//me.setCount(ge);
+	      		newBox.add(me);
+	     		toyList.remove(me);
+	    	}
+	    	toyList = newBox;
+	  }  
   	  
 	public String toString()
 	{
-		String stringy = "";
-		for(Toy hi : toyList) {
-			stringy = stringy + hi.getName() + " " + hi.getCount() + " ";
-		}
-	   return stringy;
+	 	return toyList + "\nmax == " + getMostFrequentToy();
 	}
 }
