@@ -49,7 +49,8 @@ public class StartPanel extends JPanel
 	/**
 	 * Customize the JRadioButton for the class created sub class
 	 */
-
+	private JRadioButton animalRadio;
+	
 	/**
 	 * Label to guide the user to what should be inputted.
 	 */
@@ -93,7 +94,7 @@ public class StartPanel extends JPanel
 	/**
 	 * String to populate the clueLabel if Class Generated Celebrity is picked.
 	 */
-	
+	private String animalClue;
 	
 	/**
 	 * String used for static text in label.
@@ -122,11 +123,13 @@ public class StartPanel extends JPanel
 		this.typeGroup = new ButtonGroup();
 		this.celebrityRadio = new JRadioButton("Celebrity");
 		this.literatureRadio = new JRadioButton("Literature Celebrity");
+		this.animalRadio = new JRadioButton("Animal Celebrity");
 		this.celebrityClue = "Enter the clue for the celebrity";
 		this.literatureClue = "Enter the clues for the literature celeb separated by commas";
+		this.animalClue = "Enter the clue for the amazing fluf animal celeb!!";
 		this.clueLabel = new JLabel(celebrityClue);
 		
-		this.answerField = new JTextField("Type celebrity here (4 letters minimum thx Cher)");
+		this.answerField = new JTextField("Type celebrity here (4 letters minimum thx hun~~)");
 		this.clueField = new JTextField("Enter celebrity clue here (10 letters minimum)");
 		this.addCelebrityButton = new JButton("Add current celebrity");
 		this.startButton = new JButton("Start Celebrity game");
@@ -164,6 +167,15 @@ public class StartPanel extends JPanel
 		{
 			validClue = controller.validateClue(clueText, "");
 		}
+		//animal
+		if (animalRadio.isSelected())
+		{
+			validClue = controller.validateClue(clueText, "Animal");
+		}
+		else
+		{
+			validClue = controller.validateClue(clueText, "");
+		}
 
 		if (answerText.length() > 4)
 		{
@@ -183,6 +195,7 @@ public class StartPanel extends JPanel
 		this.add(clueLabel);
 		this.add(celebrityRadio);
 		this.add(literatureRadio);
+		this.add(animalRadio);
 		this.add(answerField);
 		this.add(clueField);
 		this.add(startButton);
@@ -194,6 +207,7 @@ public class StartPanel extends JPanel
 		startButton.setEnabled(false);
 		typeGroup.add(celebrityRadio);
 		typeGroup.add(literatureRadio);
+		typeGroup.add(animalRadio);
 
 	}
 
@@ -219,9 +233,12 @@ public class StartPanel extends JPanel
 		
 		panelLayout.putConstraint(SpringLayout.NORTH, literatureRadio, 10, SpringLayout.SOUTH, celebrityRadio);
 		panelLayout.putConstraint(SpringLayout.WEST, literatureRadio, 0, SpringLayout.WEST, celebrityRadio);
+		panelLayout.putConstraint(SpringLayout.NORTH, animalRadio, 10, SpringLayout.SOUTH, literatureRadio);
+		panelLayout.putConstraint(SpringLayout.WEST, animalRadio, 0, SpringLayout.WEST, literatureRadio);
 
 		panelLayout.putConstraint(SpringLayout.NORTH, clueLabel, 10, SpringLayout.SOUTH, answerField);
 		panelLayout.putConstraint(SpringLayout.NORTH, answerField, 40, SpringLayout.SOUTH, literatureRadio);
+		//panelLayout.putConstraint(SpringLayout.NORTH, answerField, 40, SpringLayout.SOUTH, animalRadio);
 		panelLayout.putConstraint(SpringLayout.WEST, answerField, 0, SpringLayout.WEST, celebrityRadio);
 		panelLayout.putConstraint(SpringLayout.EAST, answerField, -15, SpringLayout.EAST, this);
 
@@ -275,8 +292,14 @@ public class StartPanel extends JPanel
 		 * 
 		 */
 		literatureRadio.addActionListener(select -> clueLabel.setText(literatureClue));
+		animalRadio.addActionListener(select -> clueLabel.setText(animalClue));
 		celebrityRadio.addActionListener(select -> clueLabel.setText(celebrityClue));
-
+		literatureRadio.addActionListener(select -> clueField.setText("Ew enter the literature clueee here!"));
+		animalRadio.addActionListener(select -> clueField.setText("Enter the animal (cat cat) clue here (15 letter min)"));
+		celebrityRadio.addActionListener(select -> clueField.setText("Enter the celebrity clue here (10 letters minimum)"));
+		literatureRadio.addActionListener(select -> answerField.setText("Type literature celebrity here (4 letters min!)"));
+		animalRadio.addActionListener(select -> answerField.setText("Type animal celebrity here (4 letters min!)"));
+		celebrityRadio.addActionListener(select -> answerField.setText("Type celebrity here (4 letters min!)"));
 	}
 	
 	private void invalidInput()
@@ -293,6 +316,10 @@ public class StartPanel extends JPanel
 		if (literatureRadio.isSelected())
 		{
 			type = "Literature";
+		}
+		if (animalRadio.isSelected())
+		{
+			type = "Animal";
 		}
 		String answer = answerField.getText().trim();
 		String clue = clueField.getText().trim();

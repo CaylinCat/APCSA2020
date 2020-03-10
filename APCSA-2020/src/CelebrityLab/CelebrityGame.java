@@ -73,9 +73,9 @@ public class CelebrityGame
 	 * play screen.
 	 */
 	public void play()
-	{
+	{	
 		if(celebGameList != null && celebGameList.size() > 0) {
-			this.gameCelebrity = celebGameList.get(0);
+			gameCelebrity = celebGameList.get(0);
 			gameWindow.replaceScreen("GAME");
 		}
 		
@@ -93,7 +93,13 @@ public class CelebrityGame
 	 */
 	public void addCelebrity(String name, String guess, String type)
 	{
-		celebGameList.add(new Celebrity(name, guess));
+		if(type.equals("Literature")) {
+			celebGameList.add(new LiteratureCelebrity(name, guess));
+		} else if (type.equals("Animal")) {
+			celebGameList.add(new AnimalCelebrity(name, guess));
+		} else {
+			celebGameList.add(new Celebrity(name, guess));
+		}
 	}
 
 	/**
@@ -118,8 +124,19 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
-		if(clue.length() < 10)
+		if(clue.length() < 10) {
 			return false;
+		}
+		if(type.equalsIgnoreCase("literature")) {
+			String[] temp = clue.split(",");
+			if(temp.length>1)
+				return true;
+			else
+				return false;
+		} else if (type.equalsIgnoreCase("animal")) {
+			if(clue.length() < 15)
+				return false;
+		}
 		return true;
 	}
 

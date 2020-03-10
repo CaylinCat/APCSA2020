@@ -194,6 +194,7 @@ public class CelebrityPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent mouseClick)
 			{
+				//System.out.println("AHH");
 				controller.play();
 			}
 		});
