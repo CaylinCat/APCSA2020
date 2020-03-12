@@ -294,7 +294,9 @@ public class StartPanel extends JPanel
 		literatureRadio.addActionListener(select -> clueLabel.setText(literatureClue));
 		animalRadio.addActionListener(select -> clueLabel.setText(animalClue));
 		celebrityRadio.addActionListener(select -> clueLabel.setText(celebrityClue));
-		literatureRadio.addActionListener(select -> clueField.setText("Ew enter the literature clueee here!"));
+		
+		//some extras xd
+		literatureRadio.addActionListener(select -> clueField.setText("Enter the literature clue here! (10 letter min)"));
 		animalRadio.addActionListener(select -> clueField.setText("Enter the animal (cat cat) clue here (15 letter min)"));
 		celebrityRadio.addActionListener(select -> clueField.setText("Enter the celebrity clue here (10 letters minimum)"));
 		literatureRadio.addActionListener(select -> answerField.setText("Type literature celebrity here (4 letters min!)"));

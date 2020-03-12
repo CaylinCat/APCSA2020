@@ -28,9 +28,17 @@ public class WeatherStation {
       return name;
    }
    
+   public double getLat() {
+	   return lat;
+   }
+   
    /* Determine if this weather station is located in the given state */
    public boolean isLocatedInState(String st) {
       return this.state.equals(st);
+   }
+   
+   public boolean moreSouth(double lng) {
+	   return this.lng < lng;
    }
    
 }
