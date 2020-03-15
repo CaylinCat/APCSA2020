@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Welcome03_List {
    public static void main(String[] args) {
       DataSource ds = DataSource.connect("http://weather.gov/xml/current_obs/index.xml").load();
+      ds.printUsageString();
       ArrayList<WeatherStation> allstns = ds.fetchList(WeatherStation.class, "station/station_name", 
              "station/station_id", "station/state",
              "station/latitude", "station/longitude");

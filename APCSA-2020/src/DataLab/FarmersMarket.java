@@ -4,10 +4,9 @@ package DataLab;
 */
 
 public class FarmersMarket {
-   private String name, day, monthsopen, monthsclose, openingtime, closingtime;
-   private int numberOfVendors;
+   private String name, day, monthsopen, monthsclose, openingtime, closingtime, numberOfVendors;
    
-   FarmersMarket(String name, String day, String monthsopen, String monthsclose, String openingtime, String closingtime, int numberOfVendors) {
+   FarmersMarket(String name, String day, String monthsopen, String monthsclose, String openingtime, String closingtime, String numberOfVendors) {
 	   this.name = name;
 	   this.day = day;
 	   this.monthsopen = monthsopen;
@@ -15,6 +14,7 @@ public class FarmersMarket {
 	   this.openingtime = openingtime;
 	   this.closingtime = closingtime;
 	   this.numberOfVendors = numberOfVendors;
+	   //System.out.println(this.numberOfVendors);
    }
 	
    //getters & setters
@@ -66,11 +66,11 @@ public class FarmersMarket {
 		this.closingtime = closingtime;
 	}
 	
-	public int getNumberOfVendors() {
+	public String getNumberOfVendors() {
 		return numberOfVendors;
 	}
 	
-	public void setNumberOfVendors(int numberOfVendors) {
+	public void setNumberOfVendors(String numberOfVendors) {
 		this.numberOfVendors = numberOfVendors;
 	}
 	
