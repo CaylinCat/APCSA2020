@@ -24,5 +24,7 @@ public class WordSearchRunner
     	  	     System.out.println( s + " was not found in the matrix.");
     	  	  }
     	  }
+    	  
+    	  //System.out.println(ms.checkDiagDownRight("BUN", 8, 8));
     }
 }

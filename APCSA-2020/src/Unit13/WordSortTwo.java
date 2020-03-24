@@ -13,15 +13,21 @@ public class WordSortTwo
 
 	public WordSortTwo(String sentence)
 	{
+		wordRay = sentence.split(" ");
+		sort();
 	}
 
 	public void sort()
 	{
+		Arrays.parallelSort(wordRay);
 	}
 
 	public String toString()
 	{
 		String output="";
+		for(String w : wordRay) {
+			System.out.println(w);
+		}
 		return output+"\n\n";
 	}
 }
