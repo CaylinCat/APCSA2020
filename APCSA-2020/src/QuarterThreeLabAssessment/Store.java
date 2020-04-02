@@ -11,10 +11,16 @@ public class Store{
 		setName("");
 		addSandwhich("", "");
 	}
-	
 	public Store(String storeName, String ingre, String sanName) {
 		setName(storeName);
 		addSandwhich(sanName, ingre);
+	}
+	public Store(String storeName, Sandwhich hi) {
+		setName(storeName);
+		addSandwhich(hi);
+	}
+	public Store(String storeName) {
+		setName(storeName);
 	}
 
 	public String getName() {
@@ -26,11 +32,18 @@ public class Store{
 	public void addSandwhich(String name, String ingre) {
 		sandwhich.add(new Sandwhich(name, ingre));
 	}
+	public void addSandwhich(Sandwhich hi) {
+		sandwhich.add(hi);
+	}
 	public void setSandwhich(int place, String name, String ingre) {
 		sandwhich.set(place, new Sandwhich(name, ingre));
 	}
-	public ArrayList<Sandwhich> getSandwhiches() {
-		return sandwhich;
+	public String getSandwhiches() {
+		String uwu = "";
+		for(Sandwhich hi : sandwhich) {
+			uwu = uwu + hi.getName() + " - " + hi.getIngredients() + "\n";
+		}
+		return uwu;
 	}
 	
 	public String getIngredientsInHouse() {
@@ -57,6 +70,26 @@ public class Store{
 		return 0;
 	}
 	
+	public String bestStarRating() {
+		Sandwhich hi = sandwhich.get(0);
+		for(Sandwhich boo : sandwhich) {
+			if(boo.starRating() > hi.starRating()) {
+				hi = boo;
+			}
+		}
+		return hi.getName() + " with " + hi.starRating() + " stars!";
+	}
+	
+	public Sandwhich cheapestSandwhich() {
+		Sandwhich hi = sandwhich.get(0);
+		for(Sandwhich boo : sandwhich) {
+			if(boo.salePrice(0.2) < hi.salePrice(0.2)) {
+				hi = boo;
+			}
+		}
+		return hi;
+	}
+	
 	//Selection sort
 	public void sortSandwhichByCost() {
 	   for(int i=0; i< sandwhich.size()-1; i++){
@@ -78,15 +111,22 @@ public class Store{
 	
 	//linear search
 	public boolean sandwhichInHouse(String nameWhich) {
-	   for(int spot=0; spot<sandwhich.size(); spot++) {
-	      if(sandwhich.get(spot).getName()==nameWhich)      
-	         return true;   
-	   }
+		for(Sandwhich hi : sandwhich) {
+		      if(hi.getName().equals(nameWhich))      
+		         return true;   
+		   }
 	   return false;
 	}
+	public Sandwhich findMe(String nameWhich) {
+		   for(Sandwhich hi : sandwhich) {
+		      if(hi.getName().equals(nameWhich))      
+		         return hi;   
+		   }
+		   return null;
+		}
 
 
 	public String toString() {
-		return getName() +" = "+ getSandwhiches();
+		return getName() +" which has \n"+ getSandwhiches();
 	}
 }

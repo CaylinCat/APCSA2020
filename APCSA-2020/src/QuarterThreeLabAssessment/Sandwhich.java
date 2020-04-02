@@ -12,12 +12,14 @@ public class Sandwhich{
 	}
 	
 	public Sandwhich(String n, String c) {
+		ingredients = new ArrayList<Ingredient>();
 		setIngredients(c);
 		setName(n);
 	}
 	
 	public void setIngredients(String c) {
 		Scanner scan = new Scanner(c);
+		//System.out.println(c);
 		int numingredients = scan.nextInt();
 		for (int i = 0; i < numingredients; i++) {
 			ingredients.add(new Ingredient(scan.next(),scan.nextDouble(),scan.nextInt()));
@@ -33,8 +35,12 @@ public class Sandwhich{
 	public String getName() {
 		return sandwhichName;
 	}
-	public ArrayList<Ingredient> getIngredients() {
-		return ingredients;
+	public String getIngredients() {
+		String owo = "";
+		for(Ingredient hi : ingredients) {
+			owo = owo + hi.getName() + " ";
+		}
+		return owo;
 	}
 	
 	public int getNumIngredients() {
