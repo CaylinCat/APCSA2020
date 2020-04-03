@@ -123,7 +123,21 @@ public class Store{
 		         return hi;   
 		   }
 		   return null;
-		}
+	}
+	//binarySearch
+	public int binarySearch(int key, int low, int high) {
+		    int middle = (low + high) / 2;
+		    if (high < low) {
+		        return -1;
+		    }
+		    if (key == sandwhich.get(middle).salePrice(0.2)) {
+		        return middle;
+		    } else if (key < sandwhich.get(middle).salePrice(0.2)) {
+		        return binarySearch(key, low, middle - 1);
+		    } else {
+		        return binarySearch(key, middle + 1, high);
+		    }
+	}
 
 
 	public String toString() {

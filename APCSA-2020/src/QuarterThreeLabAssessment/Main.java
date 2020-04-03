@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Main{
 	public static void main(String args[]) throws FileNotFoundException {
-		System.out.println("Hey guys welcome to the store simulation!! \n");
+		System.out.println("Hey guys welcome to the sandwhich store simulation!! \n");
 		Scanner testy = new Scanner(new File("src/QuarterThreeLabAssessment/sandwhiches.dat"));
 		String storeName = testy.nextLine();
 		int numSandwhich = testy.nextInt();
@@ -24,16 +24,21 @@ public class Main{
 		} 
 		
 		System.out.println(testyStore);
-		System.out.println("Oops! Sorry good customer those arent sorted by cost :( here~~ \n");
+		System.out.println("Oops! Sorry good customer those weren't sorted by cost :( here~~ \n");
 		testyStore.sortSandwhichByCost();
 		System.out.println(testyStore);
 		System.out.println("Don't know what to try? Our experts reccomend: " + testyStore.bestStarRating());
 		Sandwhich cheapest = testyStore.cheapestSandwhich();
 		System.out.println("Feeling short on money? Try our cheapest sandwhich: " + cheapest.getName() +
 				" priced only at $" + cheapest.salePrice(0.2));
-		System.out.println("If you are feeling like making your sandwhich, it may be the right way to go with " +
+		System.out.println("If you are feeling like making your own sandwhich, it may be the right way to go with " +
 				cheapest.getName() + " since it costs only $" + cheapest.cost() + " to make \nand has a star rating of "
 				+ cheapest.starRating() + " stars!"); 
+		System.out.println("Do we have a 5 dollar sandwhich??");
+		if(testyStore.binarySearch(5, 0, 4) == -1)
+			System.out.println("Nope :(");
+		else
+			System.out.println("Yes!");
 		
 		//System.out.println(testyStore.sandwhichInHouse("Grilled Cheese"));
 		
