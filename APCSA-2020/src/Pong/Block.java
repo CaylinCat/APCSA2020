@@ -45,6 +45,11 @@ public class Block implements Locatable
 		setColor(Color.GREEN);
 
 	}
+	public Block(int x, int y, Color c) {
+		setX(x);
+		setY(y);
+		setColor(c);
+	}
 	public Block(int x, int y) {
 		setX(x);
 		setY(y);

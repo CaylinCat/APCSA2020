@@ -19,6 +19,11 @@ public class Ball extends Block
 	}
 
 	//add the other Ball constructors
+	public Ball(Color c) {
+		super(200,200,c);
+		setXSpeed(2);
+		setYSpeed(2);
+	}
 	public Ball(int x, int y) {
 		super(x,y);
 		setXSpeed(2);
