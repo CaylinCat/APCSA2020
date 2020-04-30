@@ -65,8 +65,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
-		graphToBack.drawString("Player 1: " + player1, 200, 100);
-		graphToBack.drawString("Player 2: " + player2, 200, 120);
+		graphToBack.drawString("Player 1: " + player1, 300, 100);
+		graphToBack.drawString("Player 2: " + player2, 300, 120);
 
 
 		//see if ball hits left wall or right wall
@@ -74,6 +74,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		{
 			ball.setXSpeed(0);
 			ball.setYSpeed(0);
+			graphToBack.setColor(Color.white);
+			graphToBack.drawString("Player 1: " + player1, 300, 100);
 			player1++;
 			ball.resetBall(graphToBack);
 		}
@@ -81,8 +83,10 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		{
 			ball.setXSpeed(0);
 			ball.setYSpeed(0);
-			ball.resetBall(graphToBack);
+			graphToBack.setColor(Color.white);
+			graphToBack.drawString("Player 2: " + player2, 300, 120);
 			player2++;
+			ball.resetBall(graphToBack);
 		}
 		
 		//see if the ball hits the top or bottom wall 
