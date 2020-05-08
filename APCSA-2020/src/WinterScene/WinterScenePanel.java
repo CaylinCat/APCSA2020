@@ -18,6 +18,7 @@ public class WinterScenePanel extends JPanel implements Runnable
 {
 	private List<AbstractShape> shapes;
 	private AbstractShape sMan;
+	private AbstractShape tee;
 
 	public WinterScenePanel()
 	{
@@ -31,6 +32,8 @@ public class WinterScenePanel extends JPanel implements Runnable
 
 		//instantiate a snowman
 		sMan = new SnowMan(500,300,100,100);
+		//add the rest of the things ;w;
+		tee = new Tree(250,100,10,10);
 		new Thread(this).start();
 	}
 
@@ -50,6 +53,7 @@ public class WinterScenePanel extends JPanel implements Runnable
 
 		//make the snowman appear
 		sMan.draw(window);
+		tee.moveAndDraw(window);
 		//make the snowflakes appear and move down the screen
 		//check to see if any of the snowflakes need to be reset to the top of the screen
 		for(AbstractShape s : shapes) {
