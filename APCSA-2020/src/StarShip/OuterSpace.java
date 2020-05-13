@@ -106,19 +106,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		bull.drawEmAll(graphToBack);
 		bull.moveEmAll();
 		ali.drawEmAll(graphToBack);
-		//ali.removeDeadBullets(bull);
+		
 		if((int)(Math.random()*20) == 1)
 			ali.moveEmAll();
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
-		for(Alien a :ali.getAliens()) {
+		ali.removeDeadBullets(bull);
+	/*	for(Alien a :ali.getAliens()) {
 			for(Ammo am : bull.getAmmo()) {  
 				if (am.getX() >= a.getX() && am.getX() <= a.getX() + am.getWidth() && am.getY() >= a.getY() && am.getY() <= a.getY() + a.getHeight()) {
 					bull.removeAmmo(am);
 					ali.removeAlien(a);
 				}
 			}
-		}
+		} */
 
 		twoDGraph.drawImage(back, null, 0, 0);
 	}

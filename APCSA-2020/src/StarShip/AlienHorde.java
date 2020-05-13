@@ -90,14 +90,12 @@ public class AlienHorde
 		return aliens;
 	}
 
-	public void removeDeadBullets(Bullets bull)
-	{
+	public void removeDeadBullets(Bullets bull) {
 		if (bull.getAmmo().size() > 0) {
 			for(int i=0; i<aliens.size(); i++) {
 				for (int j = 0; j < bull.getAmmo().size(); j++) {
 					if (bull.getAmmo().get(j).didCollide(aliens.get(i))) {
 						aliens.remove(i);
-						i = 0;
 						break;
 					}
 				}

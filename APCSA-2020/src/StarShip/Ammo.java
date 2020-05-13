@@ -73,23 +73,10 @@ public class Ammo extends MovingThing
 	
 	public boolean didCollide(Alien al) {
 		if (getX() + 10 >= al.getX() && getX() <= al.getX() + al.getWidth() && getY() - 10 >= al.getY() && getY() <= al.getY() + al.getHeight()) {
-			kill();
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
-
-	public boolean isAlive() {
-		if (getY() < 0)
-			kill();
-		return alive;
-	}
-
-	public void kill() {
-		alive = false;
-	}
-	
 
 	public String toString()
 	{
