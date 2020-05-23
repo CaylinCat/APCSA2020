@@ -15,12 +15,9 @@ import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class OuterSpace extends Canvas implements KeyListener, Runnable
+public class NewSpace extends Canvas implements KeyListener, Runnable
 {
 	private Ship ship;
-	private Alien alienOne;
-	private Alien alienTwo;
-	private Ammo amu;
 	private Bullets bull;
 	private AlienHorde ali;
 
@@ -33,7 +30,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private boolean[] keys;
 	private BufferedImage back;
 
-	public OuterSpace()
+	public NewSpace()
 	{
 		setBackground(Color.black);
 
@@ -41,13 +38,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(100,400,100,100,5);
-		//alienOne = new Alien(90,40,60,60,5);
-		//alienTwo = new Alien(150,40,60,60,5);
-		//amu = new Ammo(10,10,2);
+		ship = new Ship(50,200,100,100,5);
 		bull = new Bullets();
 		ali = new AlienHorde(6);
-		ali.fillIt(100, 40, 60, 60, 5);
+		ali.fillItDown(600, 40, 60, 60, 5);
 
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -108,24 +102,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		ali.drawEmAll(graphToBack);
 		
 		if((int)(Math.random()*20) == 1)
-			ali.moveEmAll(true);
+			ali.moveEmAll(false);
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 		ali.removeDeadBullets(bull);
-		
 		if(ali.getAliens().size()==0) {
 			ali.fillIt(100, 40, 60, 60, 5);
 		}
-		
-		//System.out.println(ali.getAliens().size());
-	/*	for(Alien a :ali.getAliens()) {
-			for(Ammo am : bull.getAmmo()) {  
-				if (am.getX() >= a.getX() && am.getX() <= a.getX() + am.getWidth() && am.getY() >= a.getY() && am.getY() <= a.getY() + a.getHeight()) {
-					bull.removeAmmo(am);
-					ali.removeAlien(a);
-				}
-			}
-		} */
 
 		twoDGraph.drawImage(back, null, 0, 0);
 	}

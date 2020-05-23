@@ -39,6 +39,14 @@ public class AlienHorde
 			nX+=100;
 		}
 	}
+	
+	public void fillItDown(int x, int y, int w, int h, int s) {
+		int nY = y;
+		for (int i = 0; i < size; i++) {
+			aliens.add(new Alien(x, nY, w, h, s));
+			nY+=100;
+		}
+	}
 
 	public void drawEmAll( Graphics window )
 	{
@@ -47,7 +55,7 @@ public class AlienHorde
 		}
 	}
 
-	public void moveEmAll()
+	public void moveEmAll(boolean down)
 	{
 		/*int hii = (int)(Math.random()*3)+1;
 		if(hii==1)
@@ -62,26 +70,51 @@ public class AlienHorde
 				hi.move("RIGHT");
 				hi.move("RIGHT");
 			}
-			owo=3;
-			prev=1;
+			if(down = true) {
+				owo=3;
+				prev=1;
+			} else {
+				owo=2;
+				prev=1;
+			}
 		} else if(owo==2) {
 			for(Alien hi : aliens) {
 				hi.move("LEFT");
 				hi.move("LEFT");
 				hi.move("LEFT");
 			}
-			owo=3;
-			prev=2;
+			if(down = true) {
+				owo=3;
+				prev=2;
+			} else {
+				if(prev==3)
+					owo=4;
+				else
+					owo=3;
+			}
 		} else if(owo==3) {
 			for(Alien hi : aliens) {
 				hi.move("DOWN");
 				hi.move("DOWN");
 				hi.move("DOWN");
 			}
-			if(prev==1)
+			if(down = true) {
+				if(prev==1)
+					owo=2;
+				else
+					owo=1;
+			} else {
 				owo=2;
-			else
-				owo=1;
+				prev=3;
+			}
+		} else if (owo==4) {
+			for(Alien hi : aliens) {
+				hi.move("UP");
+				hi.move("UP");
+				hi.move("UP");
+			}
+			owo=2;
+			prev=4;
 		}
 			
 	}
