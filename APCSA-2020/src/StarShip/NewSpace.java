@@ -21,6 +21,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Bullets bull;
 	private AlienHorde ali;
+	private PowerUp pu;
 
 	/* uncomment once you are ready for this part
 	 *
@@ -31,7 +32,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 	private boolean[] keys;
 	private BufferedImage back;
 	private int aliSpeed, score;
-	private boolean gameOver;
+	private boolean gameOver, powerUpMe, shield;
 
 	public NewSpace()
 	{
@@ -48,6 +49,8 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 		ali.fillItDown(600, 40, 60, 60, aliSpeed);
 		score = 0;
 		gameOver = false;
+		powerUpMe = false;
+		shield = false;
 
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -109,6 +112,20 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 		
 		if((int)(Math.random()*20) == 1)
 			ali.moveEmAll(false);
+		
+		//powerup stuff
+		if((int)(Math.random()*200) == 1 && powerUpMe == false && shield == false) {
+			pu = new PowerUp(300 + (int)(Math.random()*100),100 + (int)(Math.random()*200),100,100,5);
+			powerUpMe = true;
+		}
+		if(powerUpMe == true) {
+			pu.draw(graphToBack);
+			pu.move("LEFT");
+		}
+		if(powerUpMe && pu.didCollide(ship)) {
+			shield = true;
+			powerUpMe = false;
+		}
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 		ali.removeDeadBullets(bull);
@@ -118,12 +135,22 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 			ali.fillItDown(600, 40, 60, 60, aliSpeed);
 		}
 		
-		//game over?
-		//System.out.println(ali.getX());
-		if(ali.getX()==0 || ali.shouldBeDead(ship)) 
-			gameOver=true;
-
+		//shield stuff
+		if(shield) {
+			ship.setImage("shipWithShield.jpg");
+		}
 		
+		//game over?
+		if(ali.getX()==0 || ali.shouldBeDead(ship)) {
+			if(shield == false) {
+				gameOver=true;
+			} else { 
+				shield = false;
+				ship.setImage("ship2.jpg");
+			}
+				
+		}
+
 		if(gameOver==true) {
 			graphToBack.setFont(new Font("Serif", Font.BOLD, 50));
 			graphToBack.drawString("Game Over!!!", 250, 300);

@@ -4,43 +4,42 @@ package StarShip;
 //Name -
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
 
-public class Ship extends MovingThing
+public class PowerUp extends MovingThing
 {
 	private int speed;
 	private Image image;
 
-	public Ship()
+	public PowerUp()
 	{
 		this(10,10,10,10,10);
 	}
 
-	public Ship(int x, int y)
+	public PowerUp(int x, int y)
 	{
 	   //add code here
 		this(x,y,10,10,10);
 	}
 
-	public Ship(int x, int y, int s)
+	public PowerUp(int x, int y, int s)
 	{
 	   //add code here
 		this(x,y,10,10,10);
 		speed = s;
 	}
 
-	public Ship(int x, int y, int w, int h, int s)
+	public PowerUp(int x, int y, int w, int h, int s)
 	{
 		super(x, y, w, h);
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("ship.jpg");
+			URL url = getClass().getResource("pu.jpg");
 			image = ImageIO.read(url);
 		}
 		catch(Exception e)
@@ -50,27 +49,8 @@ public class Ship extends MovingThing
 		}
 	}
 	
-	public Ship(int x, int y, int w, int h, int s, boolean hi)
-	{
-		super(x, y, w, h);
-		speed=s;
-		try
-		{
-			URL url = getClass().getResource("ship2.jpg");
-			image = ImageIO.read(url);
-			//
-		}
-		catch(Exception e)
-		{
-			//feel free to do something here
-			System.out.println("RIP");
-		}
-	}
-
-
 	public void setSpeed(int s)
 	{
-	   //add more code
 		speed = s;
 	}
 
@@ -78,18 +58,9 @@ public class Ship extends MovingThing
 	{
 	   return speed;
 	}
-	
-	public void setImage(String im) {
-		try {
-			image = ImageIO.read(getClass().getResource(im));
-		} catch (IOException e) {
-			System.out.println("RIP");
-		}
-	}
 
 	public void move(String direction)
 	{
-		//add code here
 		if(direction.equals("RIGHT"))
 			setX(getX() + speed);
 			
@@ -103,8 +74,8 @@ public class Ship extends MovingThing
 			setY(getY() + speed);
 	}
 	
-	public boolean didCollide(Alien al) {
-		if (getX() + getWidth() >= al.getX() && getX() <= al.getX() + al.getWidth() && getY() >= al.getY() && getY() <= al.getY() + al.getHeight()) {
+	public boolean didCollide(Ship shippp) {
+		if (getX() + getWidth() >= shippp.getX() && getX() <= shippp.getX() + shippp.getWidth() && getY() >= shippp.getY() && getY() <= shippp.getY() + shippp.getHeight()) {
 			return true;
 		}
 		return false;
