@@ -33,10 +33,16 @@ public class Bullets
 		}
 	}
 
-	public void moveEmAll()
+	public void moveEmAll(boolean up)
 	{
-		for (Ammo hi : ammo) {
-			hi.move("UP");
+		if(up == true) {
+			for (Ammo hi : ammo) {
+				hi.move("UP");
+			}
+		} else {
+			for (Ammo hi : ammo) {
+				hi.move("RIGHT");
+			}
 		}
 	}
 	

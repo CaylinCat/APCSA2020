@@ -104,7 +104,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//alienOne.draw(graphToBack);
 		//alienTwo.draw(graphToBack);
 		bull.drawEmAll(graphToBack);
-		bull.moveEmAll();
+		bull.moveEmAll(true);
 		ali.drawEmAll(graphToBack);
 		
 		if((int)(Math.random()*20) == 1)

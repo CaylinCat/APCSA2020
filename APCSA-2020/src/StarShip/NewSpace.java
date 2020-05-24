@@ -4,6 +4,7 @@ package StarShip;
 //Name -
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Canvas;
@@ -29,6 +30,8 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 
 	private boolean[] keys;
 	private BufferedImage back;
+	private int aliSpeed, score;
+	private boolean gameOver;
 
 	public NewSpace()
 	{
@@ -38,10 +41,13 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(50,200,100,100,5);
+		ship = new Ship(50,200,100,100,5,true);
 		bull = new Bullets();
-		ali = new AlienHorde(6);
-		ali.fillItDown(600, 40, 60, 60, 5);
+		aliSpeed = 5;
+		ali = new AlienHorde(5);
+		ali.fillItDown(600, 40, 60, 60, aliSpeed);
+		score = 0;
+		gameOver = false;
 
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -87,7 +93,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 		if(keys[4] == true){
-			bull.add(new Ammo((ship.getX() + ship.getWidth() / 2) - 5,ship.getY() - 5, 5));
+			bull.add(new Ammo(ship.getX() + ship.getWidth()-5,(ship.getY() + ship.getHeight() / 2)  - 5, 5));
 		}
 		
 
@@ -98,7 +104,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 		//alienOne.draw(graphToBack);
 		//alienTwo.draw(graphToBack);
 		bull.drawEmAll(graphToBack);
-		bull.moveEmAll();
+		bull.moveEmAll(false);
 		ali.drawEmAll(graphToBack);
 		
 		if((int)(Math.random()*20) == 1)
@@ -106,9 +112,28 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 		ali.removeDeadBullets(bull);
+		score = ali.getNumDead();
 		if(ali.getAliens().size()==0) {
-			ali.fillIt(100, 40, 60, 60, 5);
+			aliSpeed+=5;
+			ali.fillItDown(600, 40, 60, 60, aliSpeed);
 		}
+		
+		//game over?
+		//System.out.println(ali.getX());
+		if(ali.getX()==0 || ali.shouldBeDead(ship)) 
+			gameOver=true;
+
+		
+		if(gameOver==true) {
+			graphToBack.setFont(new Font("Serif", Font.BOLD, 50));
+			graphToBack.drawString("Game Over!!!", 250, 300);
+		}
+			
+		//score stuff xddd
+		graphToBack.setFont(new Font("Serif", Font.BOLD, 25));
+		graphToBack.drawString("Score: " + score, 350, 100);
+		
+		
 
 		twoDGraph.drawImage(back, null, 0, 0);
 	}

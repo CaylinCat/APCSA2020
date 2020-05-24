@@ -70,6 +70,9 @@ public class Alien extends MovingThing
 		
 		if(direction.equals("DOWN"))
 			setY(getY() + speed);
+		
+		if(direction.equals("UP"))
+			setY(getY() - speed);
 	}
 
 	public void draw( Graphics window )

@@ -48,6 +48,23 @@ public class Ship extends MovingThing
 			System.out.println("RIP");
 		}
 	}
+	
+	public Ship(int x, int y, int w, int h, int s, boolean hi)
+	{
+		super(x, y, w, h);
+		speed=s;
+		try
+		{
+			URL url = getClass().getResource("ship2.jpg");
+			image = ImageIO.read(url);
+			//
+		}
+		catch(Exception e)
+		{
+			//feel free to do something here
+			System.out.println("RIP");
+		}
+	}
 
 
 	public void setSpeed(int s)
@@ -75,6 +92,13 @@ public class Ship extends MovingThing
 		
 		if(direction.equals("DOWN"))
 			setY(getY() + speed);
+	}
+	
+	public boolean didCollide(Alien al) {
+		if (getX() + getWidth() >= al.getX() && getX() <= al.getX() + al.getWidth() && getY() >= al.getY() && getY() <= al.getY() + al.getHeight()) {
+			return true;
+		}
+		return false;
 	}
 
 	public void draw( Graphics window )

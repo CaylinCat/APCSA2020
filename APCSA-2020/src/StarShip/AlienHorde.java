@@ -17,6 +17,7 @@ public class AlienHorde
 	private int size;
 	private int owo=1;
 	private int prev;
+	private int numDead=0;
 
 	public AlienHorde(int size)
 	{
@@ -70,7 +71,7 @@ public class AlienHorde
 				hi.move("RIGHT");
 				hi.move("RIGHT");
 			}
-			if(down = true) {
+			if(down == true) {
 				owo=3;
 				prev=1;
 			} else {
@@ -83,7 +84,7 @@ public class AlienHorde
 				hi.move("LEFT");
 				hi.move("LEFT");
 			}
-			if(down = true) {
+			if(down == true) {
 				owo=3;
 				prev=2;
 			} else {
@@ -98,7 +99,7 @@ public class AlienHorde
 				hi.move("DOWN");
 				hi.move("DOWN");
 			}
-			if(down = true) {
+			if(down == true) {
 				if(prev==1)
 					owo=2;
 				else
@@ -117,10 +118,19 @@ public class AlienHorde
 			prev=4;
 		}
 			
+		//System.out.println(owo);
 	}
 	
 	public List<Alien> getAliens(){
 		return aliens;
+	}
+	
+	public int getNumDead() {
+		return numDead;
+	}
+	
+	public int getX() {
+		return aliens.get(0).getX();
 	}
 
 	public void removeDeadBullets(Bullets bull) {
@@ -129,11 +139,21 @@ public class AlienHorde
 				for (int j = 0; j < bull.getAmmo().size(); j++) {
 					if (bull.getAmmo().get(j).didCollide(aliens.get(i))) {
 						aliens.remove(i);
+						numDead++;
 						break;
 					}
 				}
 			}
 		}
+	}
+	
+	public boolean shouldBeDead(Ship ship) {
+		for(int i=0; i<aliens.size(); i++) {
+			if (ship.didCollide(aliens.get(i))) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public String toString()
