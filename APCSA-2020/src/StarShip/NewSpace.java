@@ -115,7 +115,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 		
 		//powerup stuff
 		if((int)(Math.random()*200) == 1 && powerUpMe == false && shield == false) {
-			pu = new PowerUp(300 + (int)(Math.random()*100),100 + (int)(Math.random()*200),100,100,5);
+			pu = new PowerUp(300 + (int)(Math.random()*100),200 + (int)(Math.random()*200),100,100,2);
 			powerUpMe = true;
 		}
 		if(powerUpMe == true) {
@@ -126,6 +126,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 			shield = true;
 			powerUpMe = false;
 		}
+		
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 		ali.removeDeadBullets(bull);
@@ -145,6 +146,7 @@ public class NewSpace extends Canvas implements KeyListener, Runnable
 			if(shield == false) {
 				gameOver=true;
 			} else { 
+				ali.alienMurderer(ship);
 				shield = false;
 				ship.setImage("ship2.jpg");
 			}

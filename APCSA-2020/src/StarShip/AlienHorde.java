@@ -155,6 +155,13 @@ public class AlienHorde
 		}
 		return false;
 	}
+	public void alienMurderer(Ship ship) {
+		for(int i=0; i<aliens.size(); i++) {
+			if (ship.didCollide(aliens.get(i))) {
+				aliens.remove(i);
+			}
+		}
+	}
 
 	public String toString()
 	{
