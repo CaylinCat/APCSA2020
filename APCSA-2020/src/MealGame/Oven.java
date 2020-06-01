@@ -1,5 +1,7 @@
 package MealGame;
 
+import java.awt.Graphics;
+
 public class Oven extends Thing{
 	
 	public Oven() {
@@ -8,5 +10,9 @@ public class Oven extends Thing{
 	
 	public Oven(int x, int y, int w, int h, String s) {
 		super(x,y,w,h,s);
+	}
+	
+	public void draw( Graphics window ){
+		super.draw(window);
 	}
 }

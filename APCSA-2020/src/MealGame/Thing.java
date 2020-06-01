@@ -1,5 +1,6 @@
 package MealGame;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +28,10 @@ public class Thing {
 		} catch (IOException e) {
 			System.out.println("Not here!");
 		}
+	}
+	
+	public void draw( Graphics window ){
+		window.drawImage(getI(),getX(),getY(),getW(),getH(),null);
 	}
 
 	public int getX() {

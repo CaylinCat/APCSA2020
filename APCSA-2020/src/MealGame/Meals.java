@@ -10,7 +10,7 @@ public class Meals{
 	private static ArrayList<Integer> food = new ArrayList<Integer>();
 	private int mealsDone = 0;
 	
-	public static void main(String args[]) {
+	public Meals() {
 	    try {
 	      Scanner input = new Scanner(new File("src/MealGame/foodItems.txt"));
 	      while(input.hasNext()){
@@ -50,7 +50,8 @@ public class Meals{
 	}
 	
 	public String toString() {
-		return "Meal requires: " + food.get(0) + "" + food.get(1) + "" + food.get(2) + "" + food.get(3) + "" + food.get(4) + "";
+		return "Meal requires: " + food.get(0) + " vegetables, " + food.get(1) + " grains, " + food.get(2) + "fruits, " + food.get(3) + 
+				" protein, and " + food.get(4) + " dairy.";
 	}
 	
 }

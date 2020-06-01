@@ -26,7 +26,7 @@ public class MoveThing extends Thing{
 	}
 	
 	public void draw( Graphics window ){
-		window.drawImage(getI(),getX(),getY(),getW(),getH(),null);
+		super.draw(window);
 	}
 	
 	public void move(String direction)
