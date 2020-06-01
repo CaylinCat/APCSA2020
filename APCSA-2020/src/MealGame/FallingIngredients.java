@@ -10,9 +10,6 @@ import StarShip.Ship;
 public class FallingIngredients{
 	private List<Ingredient> ingre;
 	private int size;
-	private int owo=1;
-	private int prev;
-	private int numDead=0;
 
 	public FallingIngredients(int size)
 	{
