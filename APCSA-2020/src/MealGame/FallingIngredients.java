@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import StarShip.Alien;
+import StarShip.Ship;
 
 public class FallingIngredients{
 	private List<Ingredient> ingre;
@@ -43,5 +44,13 @@ public class FallingIngredients{
 	
 	public void moveEmAll(boolean down) {
 		
+	}
+	
+	public void removeIngredients(Player player) {
+		for(int i=0; i<ingre.size(); i++) {
+			if (player.didCollide(ingre.get(i))) {
+				ingre.remove(i);
+			}
+		}
 	}
 }
