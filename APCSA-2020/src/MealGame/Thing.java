@@ -8,8 +8,8 @@ import javax.imageio.ImageIO;
 
 public class Thing {
 	
-	int x, y, w ,h;
-	Image i;
+	private int x, y, w ,h;
+	private Image i;
 	
 	public Thing() {
 		x = 20;

@@ -6,8 +6,8 @@ import StarShip.Alien;
 
 public class Player extends MoveThing{
 	
-	Ingredient i;
-	boolean hasIngredient = false;
+	private String ingredientType;
+	private boolean hasIngredient = false;
 	
 	public Player(){
 		super(20,20,20,20,"",2,2);
@@ -31,7 +31,7 @@ public class Player extends MoveThing{
 	
 	public boolean didCollide(Ingredient in) {
 		if (getX() + getW() >= in.getX() && getX() <= in.getX() + in.getW() && getY() >= in.getY() && getY() <= in.getY() + in.getH()) {
-			i = in;
+			ingredientType = in.getType();
 			hasIngredient = true;
 			return true;
 		}
