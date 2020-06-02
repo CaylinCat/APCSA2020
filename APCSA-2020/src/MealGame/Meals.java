@@ -9,6 +9,7 @@ public class Meals{
 	
 	private static ArrayList<Integer> food = new ArrayList<Integer>();
 	private int mealsDone = 0;
+	private int score = 0;
 	
 	public Meals() {
 	    try {
@@ -40,8 +41,8 @@ public class Meals{
 	}
 	
 	public void removeFirstFive() {
-		for(int i=0; i<5; i++) {
-			food.remove(i);
+		for(int i=0; i<6; i++) {
+			food.remove(0);
 		}
 		mealsDone++;
 	}
@@ -50,9 +51,21 @@ public class Meals{
 		return mealsDone;
 	}
 	
+	public void updateScore() {
+		score += food.get(5);
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
 	public String toString() {
 		return "Meal requires: " + food.get(0) + " vegetables, " + food.get(1) + " grains, \n" + food.get(2) + " fruits, " + food.get(3) + 
 				" protein, and " + food.get(4) + " dairy.";
+	}
+	
+	public String scoreString() {
+		return "Score: " + getScore();
 	}
 	
 }

@@ -50,15 +50,15 @@ public class Player extends MoveThing{
 				else if(ingredientType.equals("grain"))
 					meal.removeOne(1);
 				else if(ingredientType.equals("fruit"))
-					meal.removeOne(1);
-				else if(ingredientType.equals("protein"))
-					meal.removeOne(1);
+					meal.removeOne(2);
+				else if(ingredientType.equals("meat"))
+					meal.removeOne(3);
 				else if(ingredientType.equals("dairy"))
-					meal.removeOne(1);
+					meal.removeOne(4);
 				else
 					System.out.println("wtf do u eat alien food or smth?");
 				hasIngredient = false;
-				System.out.println(hasIngredient);
+				//System.out.println(hasIngredient);
 				return true;
 			}
 		}
