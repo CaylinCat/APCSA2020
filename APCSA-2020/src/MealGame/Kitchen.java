@@ -76,7 +76,7 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		compost.draw(graphToBack);
 		player.draw(graphToBack);
 		
-		//player.didCollideComWithIngredient(compost, fal);
+		player.didCollideComWithIngredient(compost, fal);
 		player.didCollideOvenWithIngredient(oven, meal);
 		
 		fal.drawEmAll(graphToBack);
@@ -85,6 +85,7 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 			fal.moveEmAll(true);
 
 		fal.removeIngredients(player);
+		fal.removeBottonIngredients();
 		
 		if(fal.getIngredients().size()==0) {
 			fal.fillIt(100, 40, 100, 100, 5, "veg carrot.jpg", "carrot", "vegetable");

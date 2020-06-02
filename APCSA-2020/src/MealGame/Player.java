@@ -30,8 +30,8 @@ public class Player extends MoveThing{
 	}
 	
 	public boolean didCollide(Ingredient in) {
-		if (getX() + getW() >= in.getX() && getX() <= in.getX() + in.getW() && (getY() >= in.getY() && getY() <= in.getY() + in.getH()) ||
-				(getY() < in.getY() && getY() + getH() > in.getY())) {
+		if (getX() + getW() >= in.getX() && getX() <= in.getX() + in.getW() && ((getY() >= in.getY() && getY() <= in.getY() + in.getH()) ||
+				(getY() < in.getY() && getY() + getH() > in.getY()))) {
 			ingredientType = in.getType();
 			ingredientName = in.getName();
 			hasIngredient = true;
@@ -43,7 +43,7 @@ public class Player extends MoveThing{
 	
 	public boolean didCollideOvenWithIngredient(Oven oh, Meals meal) {
 		if (getX() + getW() >= oh.getX() && getX() <= oh.getX() + oh.getW() && getY() + getY()*0.5 >= oh.getY() && getY() <= oh.getY() + oh.getH()) {
-			System.out.println("Collided with oven");
+			//System.out.println("Collided with oven");
 			if(hasIngredient) {
 				if(ingredientType.equals("vegetable"))
 					meal.removeOne(0);
@@ -68,8 +68,11 @@ public class Player extends MoveThing{
 	
 	public boolean didCollideComWithIngredient(Compost co, FallingIngredients fal) {
 		if (getX() + getW() >= co.getX() && getX() <= co.getX() + co.getW() && getY() >= co.getY() && getY() <= co.getY() + co.getH()) {
+			//System.out.println("Collided with compost");
 			if(hasIngredient) {
 				fal.removeIngredient(ingredientName);
+				System.out.println("Removed " + ingredientName);
+				hasIngredient = false;
 				return true;
 			}
 		}

@@ -9,6 +9,7 @@ import StarShip.Alien;
 public class FallingIngredients{
 	private List<Ingredient> ingre;
 	private int size;
+	private int nm = 1;
 
 	public FallingIngredients(int size)
 	{
@@ -36,8 +37,9 @@ public class FallingIngredients{
 	public void fillIt(int x, int y, int w, int h, int ySpd, String s, String n, String t) {
 		int nX = x;
 		for (int i = 0; i < size; i++) {
-			ingre.add(new Ingredient(nX, y, w, h, ySpd, s, n, t));
+			ingre.add(new Ingredient(nX, y, w, h, ySpd, s, n + nm, t));
 			nX+=200;
+			nm++;
 		}
 	}
 	
@@ -64,6 +66,13 @@ public class FallingIngredients{
 					ingre.remove(i);
 				}
 			}
+		}
+	}
+	
+	public void removeBottonIngredients() {
+		for(int i=0; i<ingre.size(); i++) {
+			if(ingre.get(i).getY() == 640)
+				ingre.remove(i);
 		}
 	}
 }
