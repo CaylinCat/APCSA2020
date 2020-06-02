@@ -59,8 +59,10 @@ public class FallingIngredients{
 	
 	public void removeIngredients(Player player) {
 		for(int i=0; i<ingre.size(); i++) {
-			if (player.didCollide(ingre.get(i))) {
-				ingre.remove(i);
+			if (!player.hasIngredient()) {
+				if (player.didCollide(ingre.get(i))) {
+					ingre.remove(i);
+				}
 			}
 		}
 	}

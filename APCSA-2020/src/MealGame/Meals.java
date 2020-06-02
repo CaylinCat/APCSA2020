@@ -35,7 +35,8 @@ public class Meals{
 	}
 	
 	public void removeOne(int i) {
-		food.set(i, food.get(i)-1);
+		if(food.get(i) > 0)
+			food.set(i, food.get(i)-1);
 	}
 	
 	public void removeFirstFive() {
@@ -50,7 +51,7 @@ public class Meals{
 	}
 	
 	public String toString() {
-		return "Meal requires: " + food.get(0) + " vegetables, " + food.get(1) + " grains, " + food.get(2) + "fruits, " + food.get(3) + 
+		return "Meal requires: " + food.get(0) + " vegetables, " + food.get(1) + " grains, \n" + food.get(2) + " fruits, " + food.get(3) + 
 				" protein, and " + food.get(4) + " dairy.";
 	}
 	

@@ -30,17 +30,20 @@ public class Player extends MoveThing{
 	}
 	
 	public boolean didCollide(Ingredient in) {
-		if (getX() + getW() >= in.getX() && getX() <= in.getX() + in.getW() && getY() >= in.getY() && getY() <= in.getY() + in.getH()) {
+		if (getX() + getW() >= in.getX() && getX() <= in.getX() + in.getW() && (getY() >= in.getY() && getY() <= in.getY() + in.getH()) ||
+				(getY() < in.getY() && getY() + getH() > in.getY())) {
 			ingredientType = in.getType();
 			ingredientName = in.getName();
 			hasIngredient = true;
+			System.out.println("Collided with ingredient " + hasIngredient);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean didCollideOvenWithIngredient(Oven oh, Meals meal) {
-		if (getX() + getW() >= oh.getX() && getX() <= oh.getX() + oh.getW() && getY() >= oh.getY() && getY() <= oh.getY() + oh.getH()) {
+		if (getX() + getW() >= oh.getX() && getX() <= oh.getX() + oh.getW() && getY() + getY()*0.5 >= oh.getY() && getY() <= oh.getY() + oh.getH()) {
+			System.out.println("Collided with oven");
 			if(hasIngredient) {
 				if(ingredientType.equals("vegetable"))
 					meal.removeOne(0);
@@ -54,10 +57,12 @@ public class Player extends MoveThing{
 					meal.removeOne(1);
 				else
 					System.out.println("wtf do u eat alien food or smth?");
+				hasIngredient = false;
+				System.out.println(hasIngredient);
 				return true;
 			}
 		}
-		System.out.println("No gredient");
+		//System.out.println("No gredient");
 		return false;
 	}
 	
