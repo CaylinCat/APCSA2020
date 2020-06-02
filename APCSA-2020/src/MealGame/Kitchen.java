@@ -18,6 +18,7 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 	private Compost compost;
 	private FallingIngredients fal;
 	private Meals meal;
+	private int foods=0;
 	
 	private boolean[] keys;
 	private BufferedImage back;
@@ -87,21 +88,54 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		fal.removeIngredients(player);
 		fal.removeBottonIngredients();
 		
-		if(fal.getIngredients().size()==0) {
-			fal.fillIt(100, 40, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
-			
-			int num = (int) (Math.random()*25);
-			int x = (int) (Math.random()*800+100);
+		if(fal.getIngredients().size()==2) {
+			//fal.fillIt(100, 40, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
+			int num = 11;
+			//int num = (int) (Math.random()*25);
+			int x = (int) (Math.random()*700+100);
 			
 			if(num == 0)
-				fal.add(x, 40, 100, 100, 5, "Images/dairy cheese.jpg", "cheese", "dairy");
+				fal.add(x, 40, 100, 100, 5, "Images/dairy cheese.jpg", "cheese" + foods, "dairy");
 			else if(num == 1)
-				fal.add(x, 40, 100, 100, 5, "Images/dairy ice cream.jpg", "ice cream", "dairy");
+				fal.add(x, 40, 60, 120, 5, "Images/dairy ice cream.jpg", "ice cream" + foods, "dairy");
 			else if(num == 2)
-				fal.add(x, 40, 100, 100, 5, "Images/dairy milk.jpg", "milk", "dairy");
+				fal.add(x, 40, 80, 100, 5, "Images/dairy milk.jpg", "milk" + foods, "dairy");
 			else if(num == 3)
-				fal.add(x, 40, 100, 100, 5, "Images/dairy yogurt.jpg", "yogurt", "dairy");
+				fal.add(x, 40, 100, 100, 5, "Images/dairy yogurt.jpg", "yogurt" + foods, "dairy");
+			else if(num == 4)
+				fal.add(x, 40, 100, 100, 5, "Images/fruit apple.png", "apple" + foods, "fruit");
+			else if(num == 5)
+				fal.add(x, 40, 110, 70, 5, "Images/fruit banana.jpg", "banana" + foods, "fruit");
+			else if(num == 6)
+				fal.add(x, 40, 100, 100, 5, "Images/fruit orange.png", "orange" + foods, "fruit");
+			else if(num == 7)
+				fal.add(x, 40, 80, 110, 5, "Images/fruit pear.png", "pear" + foods, "fruit");
+			else if(num == 8)
+				fal.add(x, 40, 100, 100, 5, "Images/grain bread.jpg", "bread" + foods, "grain");
+			else if(num == 9)
+				fal.add(x, 40, 100, 100, 5, "Images/grain pasta.jpg", "pasta" + foods, "grain");
+			else if(num == 10)
+				fal.add(x, 40, 100, 90, 5, "Images/grain pretz.jpg", "pretz" + foods, "grain");
+			else if(num == 11)
+				fal.add(x, 40, 100, 80, 5, "Images/grain rice.jpg", "rice" + foods, "grain");
+			else if(num == 12)
+				fal.add(x, 40, 100, 100, 5, "Images/meat bacon.png", "bacon" + foods, "meat");
+			else if(num == 13)
+				fal.add(x, 40, 100, 100, 5, "Images/meat beaf.png", "beaf" + foods, "meat");
+			else if(num == 14)
+				fal.add(x, 40, 100, 100, 5, "Images/meat chicken.jpg", "chicken" + foods, "meat");
+			else if(num == 15)
+				fal.add(x, 40, 100, 100, 5, "Images/meat fish.jpg", "fish" + foods, "meat");
+			else if(num == 16)
+				fal.add(x, 40, 100, 100, 5, "Images/veg broccoli.jpg", "broccoli" + foods, "vegetable");
+			else if(num == 17)
+				fal.add(x, 40, 100, 100, 5, "Images/veg carrot.jpg", "carrot" + foods, "vegetable");
+			else if(num == 18)
+				fal.add(x, 40, 100, 100, 5, "Images/veg corn.jpg", "corn" + foods, "vegetable");
+			else if(num == 19)
+				fal.add(x, 40, 100, 100, 5, "Images/veg lettuce.png", "lettuce" + foods, "vegetable");
 			
+			foods++;
 		}
 		
 		//System.out.println(player.hasIngredient());
