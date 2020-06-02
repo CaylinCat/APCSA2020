@@ -35,15 +35,24 @@ public class Meals{
 		food.set(i, f);
 	}
 	
-	public void removeOne(int i) {
-		if(food.get(i) > 0)
+	public void removeOne(int i, MessageBoard m, String s) {
+		if(food.get(i) > 0) {
 			food.set(i, food.get(i)-1);
+		} else {
+			removeFirstFive();
+			m.changeMessage(s);
+			if(score>=5)
+				minusScore(5);
+		}
 	}
 	
 	public void removeFirstFive() {
 		for(int i=0; i<6; i++) {
 			food.remove(0);
 		}
+	}
+	
+	public void increaseMealsDone() {
 		mealsDone++;
 	}
 	
@@ -55,8 +64,16 @@ public class Meals{
 		score += food.get(5);
 	}
 	
+	public void minusScore(int i) {
+		score = score - i;
+	}
+	
 	public int getScore() {
 		return score;
+	}
+	
+	public int getPointValue() {
+		return food.get(5);
 	}
 	
 	public String toString() {

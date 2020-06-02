@@ -41,20 +41,20 @@ public class Player extends MoveThing{
 		return false;
 	}
 	
-	public boolean didCollideOvenWithIngredient(Oven oh, Meals meal) {
+	public boolean didCollideOvenWithIngredient(Oven oh, Meals meal, MessageBoard m) {
 		if (getX() + getW() >= oh.getX() && getX() <= oh.getX() + oh.getW() && getY() + getY()*0.5 >= oh.getY() && getY() <= oh.getY() + oh.getH()) {
 			//System.out.println("Collided with oven");
 			if(hasIngredient) {
 				if(ingredientType.equals("vegetable"))
-					meal.removeOne(0);
+					meal.removeOne(0,m,"Wrong ingredient D: Next Meal!");
 				else if(ingredientType.equals("grain"))
-					meal.removeOne(1);
+					meal.removeOne(1,m,"Wrong ingredient D: Next Meal!");
 				else if(ingredientType.equals("fruit"))
-					meal.removeOne(2);
+					meal.removeOne(2,m,"Wrong ingredient D: Next Meal!");
 				else if(ingredientType.equals("meat"))
-					meal.removeOne(3);
+					meal.removeOne(3,m,"Wrong ingredient D: Next Meal!");
 				else if(ingredientType.equals("dairy"))
-					meal.removeOne(4);
+					meal.removeOne(4,m,"Wrong ingredient D: Next Meal!");
 				else
 					System.out.println("wtf do u eat alien food or smth?");
 				hasIngredient = false;

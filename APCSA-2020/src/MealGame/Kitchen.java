@@ -18,6 +18,7 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 	private Compost compost;
 	private FallingIngredients fal;
 	private Meals meal;
+	private MessageBoard board;
 	private int foods=0;
 	
 	private boolean[] keys;
@@ -33,8 +34,9 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		oven = new Oven(760,460,120,120,"Images/oven.jpg");
 		compost = new Compost(0,450,90,130,"Images/compost.jpg");
 		fal = new FallingIngredients(2);
-		fal.fillIt(200, 0, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
+		fal.fillIt(200, 0, 100, 100, 1, "Images/veg carrot.jpg", "carrot", "vegetable");
 		meal = new Meals();
+		board = new MessageBoard();
 		
 		
 		this.addKeyListener(this);
@@ -78,21 +80,21 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		player.draw(graphToBack);
 		
 		player.didCollideComWithIngredient(compost, fal);
-		player.didCollideOvenWithIngredient(oven, meal);
+		player.didCollideOvenWithIngredient(oven, meal, board);
 		
 		fal.drawEmAll(graphToBack);
 		
-		//if((int)(Math.random()*20) == 1)
+		if((int)(Math.random()*2) == 1)
 			fal.moveEmAll(true);
 
 		fal.removeIngredients(player);
-		fal.removeBottonIngredients();
+		fal.removeBottonIngredients(meal,board);
 		
 		if(fal.getIngredients().size()==1) {
 			//fal.fillIt(100, 40, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
-			int num = 1;
-			//int num = (int) (Math.random()*20);
-			int x = (int) (Math.random()*700+100);
+			//int num = 1;
+			int num = (int) (Math.random()*20);
+			int x = (int) (Math.random()*600+100);
 			
 			if(num == 0)
 				fal.add(x, 40, 100, 100, 1, "Images/dairy cheese.jpg", "cheese" + foods, "dairy");
@@ -141,7 +143,9 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		
 		if(meal.getNum(0) == 0 && meal.getNum(1) == 0 && meal.getNum(2) == 0 && meal.getNum(3) == 0 && meal.getNum(4) == 0) {
 			meal.removeFirstFive();
+			meal.increaseMealsDone();
 			meal.updateScore();
+			board.changeMessage("Nice job! You earned: " + meal.getPointValue() + " points!!");
 			//System.out.println(meal.getNum(0) + meal.getNum(1) + meal.getNum(2) + meal.getNum(3) + meal.getNum(4));
 		}
 		
@@ -149,8 +153,10 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		
 		graphToBack.setFont(new Font("Serif", Font.BOLD, 25));
 		graphToBack.setColor(Color.black);
-		graphToBack.drawString(meal.toString(), 60, 100);
-		graphToBack.drawString(meal.scoreString(), 360, 150);
+		graphToBack.drawString(meal.toString(), 70, 100);
+		graphToBack.drawString(meal.scoreString(), 380, 150);
+		graphToBack.drawString(board.getMessage(), 280, 200);
+		//graphToBack.drawString("You've completed " + meal.getMealsDone() + " meals!", 300, 250);
 		
 		
 		twoDGraph.drawImage(back, null, 0, 0);

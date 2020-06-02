@@ -69,10 +69,14 @@ public class FallingIngredients{
 		}
 	}
 	
-	public void removeBottonIngredients() {
+	public void removeBottonIngredients(Meals meal, MessageBoard board) {
 		for(int i=0; i<ingre.size(); i++) {
-			if(ingre.get(i).getY() == 640)
+			if(ingre.get(i).getY() == 640) {
 				ingre.remove(i);
+				if(meal.getScore()>=5)
+					meal.minusScore(5);
+				board.changeMessage("Try not to litter!! D: D: D: D:");
+			}
 		}
 	}
 }
