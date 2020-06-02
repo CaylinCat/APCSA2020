@@ -28,11 +28,11 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		keys = new boolean[3];
 		
 		//#Stuff boiss
-		player = new Player(400,450, "girl.png", 90,130,5);
-		oven = new Oven(760,460,120,120,"oven.jpg");
-		compost = new Compost(0,450,90,130,"compost.jpg");
+		player = new Player(400,450, "Images/girl.png", 90,130,5);
+		oven = new Oven(760,460,120,120,"Images/oven.jpg");
+		compost = new Compost(0,450,90,130,"Images/compost.jpg");
 		fal = new FallingIngredients(2);
-		fal.fillIt(200, 0, 100, 100, 5, "veg carrot.jpg", "carrot", "vegetable");
+		fal.fillIt(200, 0, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
 		meal = new Meals();
 		
 		
@@ -55,7 +55,7 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		Graphics graphToBack = back.createGraphics();
 
 		graphToBack.setColor(Color.BLUE);
-		graphToBack.drawString("StarFighter ", 25, 50 );
+		graphToBack.drawString("Meal Game ", 25, 50 );
 		graphToBack.setColor(Color.WHITE);
 		graphToBack.fillRect(0,0,900,650);
 
@@ -88,7 +88,20 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 		fal.removeBottonIngredients();
 		
 		if(fal.getIngredients().size()==0) {
-			fal.fillIt(100, 40, 100, 100, 5, "veg carrot.jpg", "carrot", "vegetable");
+			fal.fillIt(100, 40, 100, 100, 5, "Images/veg carrot.jpg", "carrot", "vegetable");
+			
+			int num = (int) (Math.random()*25);
+			int x = (int) (Math.random()*800+100);
+			
+			if(num == 0)
+				fal.add(x, 40, 100, 100, 5, "Images/dairy cheese.jpg", "cheese", "dairy");
+			else if(num == 1)
+				fal.add(x, 40, 100, 100, 5, "Images/dairy ice cream.jpg", "ice cream", "dairy");
+			else if(num == 2)
+				fal.add(x, 40, 100, 100, 5, "Images/dairy milk.jpg", "milk", "dairy");
+			else if(num == 3)
+				fal.add(x, 40, 100, 100, 5, "Images/dairy yogurt.jpg", "yogurt", "dairy");
+			
 		}
 		
 		//System.out.println(player.hasIngredient());
