@@ -19,22 +19,24 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 	private FallingIngredients fal;
 	private Meals meal;
 	private MessageBoard board;
-	private int foods=0;
+	private int foods, speed;
 	
 	private boolean[] keys;
 	private BufferedImage back;
 	
-	public Kitchen() {
+	public Kitchen(String hi) {
 		
 		setBackground(Color.white);
 		keys = new boolean[3];
 		
 		//#Stuff boiss
-		player = new Player(400,450, "Images/girl.png", 90,130,5);
+		player = new Player(400,450, hi, 90,130,5);
 		oven = new Oven(760,460,120,120,"Images/oven.jpg");
 		compost = new Compost(0,450,90,130,"Images/compost.jpg");
 		fal = new FallingIngredients(2);
 		fal.fillIt(200, 0, 100, 100, 1, "Images/veg carrot.jpg", "carrot", "vegetable");
+		foods=0;
+		speed=1;
 		meal = new Meals();
 		board = new MessageBoard();
 		
@@ -97,45 +99,45 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 			int x = (int) (Math.random()*600+100);
 			
 			if(num == 0)
-				fal.add(x, 40, 100, 100, 1, "Images/dairy cheese.jpg", "cheese" + foods, "dairy");
+				fal.add(x, 40, 100, 100, speed, "Images/dairy cheese.jpg", "cheese" + foods, "dairy");
 			else if(num == 1)
-				fal.add(x, 40, 60, 120, 1, "Images/dairy ice cream.jpg", "ice cream" + foods, "dairy");
+				fal.add(x, 40, 60, 120, speed, "Images/dairy ice cream.jpg", "ice cream" + foods, "dairy");
 			else if(num == 2)
-				fal.add(x, 40, 80, 100, 1, "Images/dairy milk.jpg", "milk" + foods, "dairy");
+				fal.add(x, 40, 80, 100, speed, "Images/dairy milk.jpg", "milk" + foods, "dairy");
 			else if(num == 3)
-				fal.add(x, 40, 100, 100, 1, "Images/dairy yogurt.jpg", "yogurt" + foods, "dairy");
+				fal.add(x, 40, 100, 100, speed, "Images/dairy yogurt.jpg", "yogurt" + foods, "dairy");
 			else if(num == 4)
-				fal.add(x, 40, 100, 100, 1, "Images/fruit apple.png", "apple" + foods, "fruit");
+				fal.add(x, 40, 100, 100, speed, "Images/fruit apple.png", "apple" + foods, "fruit");
 			else if(num == 5)
-				fal.add(x, 40, 110, 70, 1, "Images/fruit banana.jpg", "banana" + foods, "fruit");
+				fal.add(x, 40, 110, 70, speed, "Images/fruit banana.jpg", "banana" + foods, "fruit");
 			else if(num == 6)
-				fal.add(x, 40, 100, 100, 1, "Images/fruit orange.png", "orange" + foods, "fruit");
+				fal.add(x, 40, 100, 100, speed, "Images/fruit orange.png", "orange" + foods, "fruit");
 			else if(num == 7)
-				fal.add(x, 40, 80, 110, 1, "Images/fruit pear.png", "pear" + foods, "fruit");
+				fal.add(x, 40, 80, 110, speed, "Images/fruit pear.png", "pear" + foods, "fruit");
 			else if(num == 8)
-				fal.add(x, 40, 100, 100, 1, "Images/grain bread.jpg", "bread" + foods, "grain");
+				fal.add(x, 40, 100, 100, speed, "Images/grain bread.jpg", "bread" + foods, "grain");
 			else if(num == 9)
-				fal.add(x, 40, 100, 100, 1, "Images/grain pasta.jpg", "pasta" + foods, "grain");
+				fal.add(x, 40, 100, 100, speed, "Images/grain pasta.jpg", "pasta" + foods, "grain");
 			else if(num == 10)
-				fal.add(x, 40, 100, 90, 1, "Images/grain pretz.jpg", "pretz" + foods, "grain");
+				fal.add(x, 40, 100, 90, speed, "Images/grain pretz.jpg", "pretz" + foods, "grain");
 			else if(num == 11)
-				fal.add(x, 40, 100, 80, 1, "Images/grain rice.jpg", "rice" + foods, "grain");
+				fal.add(x, 40, 100, 80, speed, "Images/grain rice.jpg", "rice" + foods, "grain");
 			else if(num == 12)
-				fal.add(x, 40, 100, 100, 1, "Images/meat bacon.png", "bacon" + foods, "meat");
+				fal.add(x, 40, 100, 100, speed, "Images/meat bacon.png", "bacon" + foods, "meat");
 			else if(num == 13)
-				fal.add(x, 40, 100, 90, 1, "Images/meat beaf.png", "beaf" + foods, "meat");
+				fal.add(x, 40, 100, 90, speed, "Images/meat beaf.png", "beaf" + foods, "meat");
 			else if(num == 14)
-				fal.add(x, 40, 100, 100, 1, "Images/meat chicken.jpg", "chicken" + foods, "meat");
+				fal.add(x, 40, 100, 100, speed, "Images/meat chicken.jpg", "chicken" + foods, "meat");
 			else if(num == 15)
-				fal.add(x, 40, 100, 100, 1, "Images/meat fish.jpg", "fish" + foods, "meat");
+				fal.add(x, 40, 100, 100, speed, "Images/meat fish.jpg", "fish" + foods, "meat");
 			else if(num == 16)
-				fal.add(x, 40, 95, 110, 1, "Images/veg broccoli.jpg", "broccoli" + foods, "vegetable");
+				fal.add(x, 40, 95, 110, speed, "Images/veg broccoli.jpg", "broccoli" + foods, "vegetable");
 			else if(num == 17)
-				fal.add(x, 40, 100, 100, 1, "Images/veg carrot.jpg", "carrot" + foods, "vegetable");
+				fal.add(x, 40, 100, 100, speed, "Images/veg carrot.jpg", "carrot" + foods, "vegetable");
 			else if(num == 18)
-				fal.add(x, 40, 90, 120, 1, "Images/veg corn.jpg", "corn" + foods, "vegetable");
+				fal.add(x, 40, 90, 120, speed, "Images/veg corn.jpg", "corn" + foods, "vegetable");
 			else if(num == 19)
-				fal.add(x, 40, 100, 100, 1, "Images/veg lettuce.png", "lettuce" + foods, "vegetable");
+				fal.add(x, 40, 100, 100, speed, "Images/veg lettuce.png", "lettuce" + foods, "vegetable");
 			
 			foods++;
 		}
@@ -148,6 +150,17 @@ public class Kitchen extends Canvas implements KeyListener, Runnable{
 			board.changeMessage("Nice job! You earned: " + meal.getPointValue() + " points!!");
 			//System.out.println(meal.getNum(0) + meal.getNum(1) + meal.getNum(2) + meal.getNum(3) + meal.getNum(4));
 		}
+		
+		if(foods==15 || foods==35 || foods==55 || foods==75 || foods==100) {
+			speed++;
+			foods++;
+		}
+		if(foods==20 || foods==40 || foods==60 || foods==85) {
+			speed--;
+			foods++;
+		}
+		
+		//System.out.println(speed);
 		
 		//System.out.println(player.hasIngredient());
 		
