@@ -31,7 +31,7 @@ public class Start {
 	    JFrame f=new JFrame("Start Screen");  
 	    JLabel tf = new JLabel("~ Meal Game ~");
 	    tf.setFont(new Font("Serif", Font.BOLD, 80));
-	    tf.setBounds(180,20,800,100);  
+	    tf.setBounds(180,30,800,100);  
 	    JTextArea mes = new JTextArea("Welcome to Meal Game! An educational fun game created to teach kids \nabout the 5 food groups:"
 	    		+ "vegetables, fruits, grain, protein, and dairy and \nalso to teach kids not to waste the food. \n\nMove using "
 	    		+ "left and right arrow keys. \nRun into food to pick them up. Go to the oven to put the food in the meal, \nor "
@@ -39,7 +39,10 @@ public class Start {
 	    		+ "Earn points by completing meals and have fun!!!! \n\n Select your character to start the game!!");
 	    //mes.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    mes.setFont(new Font("Serif", Font.BOLD, 14));
-	    mes.setBounds(205, 140, 480, 300);
+	    mes.setBounds(205, 150, 480, 300);
+	    JLabel mom = new JLabel("\"Eat your veggies\" - mom");
+	    mom.setFont(new Font("Serif", Font.BOLD, 25));
+	    mom.setBounds(300, 450, 600, 100);
 	    //mes.setPreferredSize(new Dimension(200,200));
 	    JButton b=new JButton(new ImageIcon(Start.class.getResource("Images/girl.png")));  
 	    b.setBounds(700,200,160,250);  
@@ -60,6 +63,7 @@ public class Start {
 	    f.add(b);
 	    f.add(c);
 	    f.add(mes);
+	    f.add(mom);
 	    f.add(tf);  
 	    f.setSize(WIDTH,HEIGHT);  
 	    f.setLayout(null);  
