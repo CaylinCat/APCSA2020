@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,8 +33,11 @@ public class Start {
 	    JFrame f=new JFrame("Start Screen");  
 	    JLabel tf = new JLabel("~ Meal Game ~");
 	    tf.setFont(new Font("Serif", Font.BOLD, 80));
-	    tf.setBounds(180,30,800,100);  
-	    JTextArea mes = new JTextArea("Welcome to Meal Game! An educational fun game created to teach kids \nabout the 5 food groups:"
+	    tf.setBounds(180,20,800,100);  
+	    JLabel author = new JLabel("Created by Caylin Canoy");
+	    author.setFont(new Font("Serif", Font.BOLD, 18));
+	    author.setBounds(340,78,300,100);  
+	    JTextArea mes = new JTextArea("Welcome to Meal Game! An educational fun game created to teach kids \nabout the 5 food groups: "
 	    		+ "vegetables, fruits, grain, protein, and dairy and \nalso to teach kids not to waste the food. \n\nMove using "
 	    		+ "left and right arrow keys. \nRun into food to pick them up. Go to the oven to put the food in the meal, \nor "
 	    		+ "go to the compost to discard the food. \n\n Don't let the food reach the bottom of the screen! \n\n "
@@ -64,10 +69,26 @@ public class Start {
 	    f.add(c);
 	    f.add(mes);
 	    f.add(mom);
+	    f.add(author);
 	    f.add(tf);  
 	    f.setSize(WIDTH,HEIGHT);  
 	    f.setLayout(null);  
 	    f.setVisible(true);   
+	    
+	    //file creation
+	    try {
+	        File badVeg = new File("IncorrectFoods.txt");
+	        if (badVeg.createNewFile()) {
+	          System.out.println("File created: " + badVeg.getName());
+	          System.out.println(badVeg.getParent());
+	        } else {
+	          System.out.println("File exists already!!!");
+	        }
+	      } catch (IOException e) {
+	        System.out.println("Oh no DD:");
+	      }
+	    
+	    
 	}  
 	
 }

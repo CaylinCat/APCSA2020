@@ -1,6 +1,8 @@
 package MealGame;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -35,10 +37,18 @@ public class Meals{
 		food.set(i, f);
 	}
 	
-	public void removeOne(int i, MessageBoard m, String s) {
+	public void removeOne(int i, MessageBoard m, String s, String wrong) {
 		if(food.get(i) > 0) {
 			food.set(i, food.get(i)-1);
 		} else {
+			try {
+				FileWriter write = new FileWriter("IncorrectFoods.txt");
+				write.write(wrong);
+				write.flush();
+				System.out.println("Yay it wrote! " + wrong);
+			} catch (IOException e) {
+				System.out.println("HM");
+			}
 			removeFirstFive();
 			m.changeMessage(s);
 			if(score>=5)
